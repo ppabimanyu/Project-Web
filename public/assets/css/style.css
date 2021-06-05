@@ -572,8 +572,9 @@ section {
   box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
   transition: all 0.3s ease-in-out;
   border-radius: 15px;
-  text-align: center;
+  text-align: left;
   border-bottom: 3px solid #fff;
+  height: 400px;
 }
 
 .services .icon-box:hover {

@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+// Route::get('/event', function () {
+//     return view('index#services');
+// });
 // Route::get('/home', function () {
 //     return view('index');
 // });

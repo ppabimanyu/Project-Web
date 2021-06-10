@@ -1,3 +1,15 @@
+# Gol_D_Workshop_Web_Framework
+
+Daftar Anggota :
+1. (E41192178) Putra Prassiesa Abimanyu
+2. (E41192426) Muhammad Syarif Januriansyah
+3. (E41192433) Mita Unziyah Fajrina
+4. (E41191929) Anton Setyo Prihartanto
+5. (E41192307) Rifky Roudana Imani Cahya
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

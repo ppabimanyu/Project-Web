@@ -72,7 +72,13 @@
             </ul>
           </li> -->
           <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-          <li><a class="getstarted scrollto" href="/register">Get Started</a></li>
+          @if (Route::has('login'))
+                    @auth
+                    <li><a class="getstarted scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    @else
+                    <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
+                    @endauth
+            @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

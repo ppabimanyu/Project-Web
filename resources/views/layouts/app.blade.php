@@ -26,12 +26,13 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="container mx-auto bg-white shadow my-5 rounded-3xl p-4 sm:px-6 lg:px-8 sticky top-2 shadow-sm">
+                    <div class="px-4">
                         {{ $header }}
                     </div>
                 </header>
             @endif
+            
 
             <!-- Page Content -->
             <main>

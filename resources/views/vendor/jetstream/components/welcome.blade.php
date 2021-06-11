@@ -1,90 +1,217 @@
-<div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-    <div>
-        <x-jet-application-logo class="block h-12 w-auto" />
-    </div>
+<!-- <div class="">
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="mt-5 md:mt-0 md:col-span-2">
+      <form action="#" method="POST">
+        <div class="shadow sm:rounded-xl sm:overflow-hidden">
+          <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-6 sm:col-span-3">
+                <label for="first_name" class="block text-md font-medium text-gray-700">Title</label>
+                <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md">
+              </div>
+              <div class="col-span-6 sm:col-span-3">
+                <label for="country" class="block text-md font-medium text-gray-700">Category</label>
+                <select id="country" name="country" autocomplete="country" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-md">
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                </select>
+              </div>
+              <div class="col-span-3 sm:col-span-2">
+                <label for="company_website" class="block text-md font-medium text-gray-700">
+                  Link
+                </label>
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-md">
+                    http://
+                  </span>
+                  <input type="text" name="company_website" id="company_website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-md border-gray-300" placeholder="www.example.com">
+                </div>
+              </div>
+            </div>
 
-    <div class="mt-8 text-2xl">
-        Welcome to your Jetstream application!
-    </div>
+            <div>
+              <label for="about" class="block text-md font-medium text-gray-700">
+                Description
+              </label>
+              <div class="mt-1">
+                <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-md border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
+              </div>
+              <p class="mt-2 text-md text-gray-500">
+                Brief description for your profile. URLs are hyperlinked.
+              </p>
+            </div>
 
-    <div class="mt-6 text-gray-500">
-        Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-        to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-        you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-        ecosystem to be a breath of fresh air. We hope you love it.
+            <div>
+              <label class="block text-md font-medium text-gray-700">
+                Cover photo
+              </label>
+              <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                <div class="space-y-1 text-center">
+                  <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <div class="flex text-md text-gray-600">
+                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                      <span>Upload a file</span>
+                      <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                    </label>
+                    <p class="pl-1">or drag and drop</p>
+                  </div>
+                  <p class="text-xs text-gray-500">
+                    PNG, JPG, GIF up to 10MB
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-md font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+<div class="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 md:gap-10 grid-cols-2 gap-6">
+
+<div class="overflow-hidden rounded-lg h-90 w-60 md:w-80">
+    <div class="grid justify-items-center md:m-28 m-18">
+        <a href="#" class="rounded-full shadow h-24 w-24 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+        </a>
     </div>
 </div>
-
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-    <div class="p-6">
-        <div class="flex items-center">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laravel.com/docs">Documentation</a></div>
+<div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="/assets/img/about-img.svg" class="max-h-40 w-full object-cover"/>
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+            <p class="text-indigo-500 text-md font-medium">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                Supercharged
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                The new supercar is here, 543 cv and 140 000$. This is best racing GT about 7 years on...
+            </p>
         </div>
-
-        <div class="ml-12">
-            <div class="mt-2 text-sm text-gray-500">
-                Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
-            </div>
-
-            <a href="https://laravel.com/docs">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                        <div>Explore the documentation</div>
-
-                        <div class="ml-1 text-indigo-500">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </div>
-                </div>
-            </a>
+    </a>
+</div>
+<div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="/assets/img/about-img.svg" class="max-h-40 w-full object-cover"/>
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+            <p class="text-indigo-500 text-md font-medium">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                Supercharged
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                The new supercar is here, 543 cv and 140 000$. This is best racing GT about 7 years on...
+            </p>
         </div>
-    </div>
-
-    <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
-        <div class="flex items-center">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laracasts.com">Laracasts</a></div>
+    </a>
+</div>
+<div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="/assets/img/about-img.svg" class="max-h-40 w-full object-cover"/>
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+            <p class="text-indigo-500 text-md font-medium">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                Supercharged
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                The new supercar is here, 543 cv and 140 000$. This is best racing GT about 7 years on...
+            </p>
         </div>
-
-        <div class="ml-12">
-            <div class="mt-2 text-sm text-gray-500">
-                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-            </div>
-
-            <a href="https://laracasts.com">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                        <div>Start watching Laracasts</div>
-
-                        <div class="ml-1 text-indigo-500">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </div>
-                </div>
-            </a>
+    </a>
+</div>
+<div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="/assets/img/about-img.svg" class="max-h-40 w-full object-cover"/>
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+            <p class="text-indigo-500 text-md font-medium">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                Supercharged
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                The new supercar is here, 543 cv and 140 000$. This is best racing GT about 7 years on...
+            </p>
         </div>
-    </div>
-
-    <div class="p-6 border-t border-gray-200">
-        <div class="flex items-center">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://tailwindcss.com/">Tailwind</a></div>
+    </a>
+</div>
+<div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="/assets/img/about-img.svg" class="max-h-40 w-full object-cover"/>
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+            <p class="text-indigo-500 text-md font-medium">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                Supercharged
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                The new supercar is here, 543 cv and 140 000$. This is best racing GT about 7 years on...
+            </p>
         </div>
-
-        <div class="ml-12">
-            <div class="mt-2 text-sm text-gray-500">
-                Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.
-            </div>
+    </a>
+</div>
+<div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="/assets/img/about-img.svg" class="max-h-40 w-full object-cover"/>
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+            <p class="text-indigo-500 text-md font-medium">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                Supercharged
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                The new supercar is here, 543 cv and 140 000$. This is best racing GT about 7 years on...
+            </p>
         </div>
-    </div>
-
-    <div class="p-6 border-t border-gray-200 md:border-l">
-        <div class="flex items-center">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Authentication</div>
+    </a>
+</div>
+<div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="/assets/img/about-img.svg" class="max-h-40 w-full object-cover"/>
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+            <p class="text-indigo-500 text-md font-medium">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                Supercharged
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                The new supercar is here, 543 cv and 140 000$. This is best racing GT about 7 years on...
+            </p>
         </div>
-
-        <div class="ml-12">
-            <div class="mt-2 text-sm text-gray-500">
-                Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started what matters most: building your application.
-            </div>
+    </a>
+</div>
+<div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer">
+    <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="/assets/img/about-img.svg" class="max-h-40 w-full object-cover"/>
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+            <p class="text-indigo-500 text-md font-medium">
+                Article
+            </p>
+            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                Supercharged
+            </p>
+            <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+                The new supercar is here, 543 cv and 140 000$. This is best racing GT about 7 years on...
+            </p>
         </div>
-    </div>
+    </a>
+</div>
 </div>

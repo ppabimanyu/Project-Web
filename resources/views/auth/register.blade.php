@@ -5,7 +5,7 @@
         </x-slot>
 
         <div class="lg:flex md:flex justify-center lg:p-12 gap-x-28">
-            <img class="lg:w-2/3 md:w-1/3 sm:w-96 w-96 rounded-full" src="/assets/img/about-img.svg" alt="">
+            <img class="lg:w-1/2 md:w-1/3 sm:w-96 w-96 rounded-full" src="/assets/img/about-img.svg" alt="">
             
 
             <x-jet-validation-errors class="mb-4" />
@@ -15,22 +15,22 @@
                 <h1 class="text-4xl font-serif">Register</h1><br>
                 <div>
                     <x-jet-label for="name" class="font-serif text-lg" value="{{ __('Name') }}" />
-                    <x-jet-input id="name" class="block mt-1 w-full rounded-full h-12" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <x-jet-input id="name" class="block mt-1 w-96 rounded-full h-12" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                 </div>
 
                 <div class="mt-4">
                     <x-jet-label for="email" class="font-serif text-lg" value="{{ __('Email') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full rounded-full h-12" type="email" name="email" :value="old('email')" required />
+                    <x-jet-input id="email" class="block mt-1 w-96 rounded-full h-12" type="email" name="email" :value="old('email')" required />
                 </div>
 
                 <div class="mt-4">
                     <x-jet-label for="password" class="font-serif text-lg" value="{{ __('Password') }}" />
-                    <x-jet-input id="password" class="block mt-1 w-full rounded-full h-12" type="password" name="password" required autocomplete="new-password" />
+                    <x-jet-input id="password" class="block mt-1 w-96 rounded-full h-12" type="password" name="password" required autocomplete="new-password" />
                 </div>
 
                 <div class="mt-4">
                     <x-jet-label for="password_confirmation" class="font-serif text-lg" value="{{ __('Confirm Password') }}" />
-                    <x-jet-input id="password_confirmation" class="block mt-1 w-full rounded-full h-12" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    <x-jet-input id="password_confirmation" class="block mt-1 w-96 rounded-full h-12" type="password" name="password_confirmation" required autocomplete="new-password" />
                 </div>
 
                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

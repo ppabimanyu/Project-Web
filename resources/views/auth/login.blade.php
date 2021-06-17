@@ -5,7 +5,7 @@
         </x-slot>
 
         <div class="lg:flex md:flex justify-center lg:p-12 gap-x-28">
-            <img class="lg:w-2/3 md:w-1/3 sm:w-96 w-96 rounded-full" src="/assets/img/about-img.svg" alt="">
+            <img class="lg:w-1/2 md:w-1/3 sm:w-96 w-96 rounded-full" src="/assets/img/about-img.svg" alt="">
             
 
             <x-jet-validation-errors class="mb-4" />

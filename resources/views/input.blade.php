@@ -22,8 +22,8 @@
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                         <div class="grid grid-cols-3 gap-6">
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="first_name" class="block text-md font-medium text-gray-700">Title</label>
-                            <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md">
+                            <label for="title" class="block text-md font-medium text-gray-700">Title</label>
+                            <input type="text" name="title" id="title" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md" placeholder="Title">
                         </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label for="country" class="block text-md font-medium text-gray-700">Category</label>
@@ -34,7 +34,19 @@
                             <option>Other</option>
                             </select>
                         </div>
+                        <div class="col-span-3 sm:col-span-1">
+                            <label for="time" class="block text-md font-medium text-gray-700">Time</label>
+                            <input type="text" name="time" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md timepicker" placeholder="h:mm PM/AM">
+                        </div>
                         <div class="col-span-3 sm:col-span-2">
+                            <label for="datepicker" class="block text-md font-medium text-gray-700">Date</label>
+                            <input type="text" name="first_name" id="datepicker" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md" placeholder="dd/mm/yyyy">
+                        </div>
+                        <div class="col-span-6 sm:col-span-1">
+                            <label for="platform" class="block text-md font-medium text-gray-700">Platform</label>
+                            <input type="text" name="platform" id="platform" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md" placeholder="Zoom">
+                        </div>
+                        <div class="col-span-6 sm:col-span-2">
                             <label for="company_website" class="block text-md font-medium text-gray-700">
                             Link
                             </label>
@@ -48,15 +60,12 @@
                         </div>
 
                         <div>
-                        <label for="about" class="block text-md font-medium text-gray-700">
-                            Description
-                        </label>
-                        <div class="mt-1">
-                            <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-md border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
-                        </div>
-                        <p class="mt-2 text-md text-gray-500">
-                            Brief description for your profile. URLs are hyperlinked.
-                        </p>
+                            <label for="about" class="block text-md font-medium text-gray-700">
+                                Description
+                            </label>
+                            <div class="mt-1">
+                                <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-md border border-gray-300 rounded-md" placeholder="Description"></textarea>
+                            </div>
                         </div>
 
                         <div>

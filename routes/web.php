@@ -16,17 +16,35 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/input', function () {
-    return view('input');
-});
-Route::get('/detail', function () {
-    return view('detail');
-});
+// Route::get('/input', function () {
+//     return view('input');
+// });
+// Route::get('/detail', function () {
+//     return view('detail');
+// });
 
-Route::get('/portfolio-details', function () {
-    return view('portfolio-details');
-});
+// Route::get('/portfolio-details', function () {
+//     return view('portfolio-details');
+// });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+Route::group(['middleware' => ['auth:sanctum', 'verified' ]], function() {
+    Route::get('/dashboard', function() {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/portfolio-details', function () {
+        return view('portfolio-details');
+    });
+
+    Route::get('/detail', function () {
+        return view('detail');
+    });
+
+    Route::get('/input', function () {
+        return view('input');
+    });
+});

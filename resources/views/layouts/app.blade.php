@@ -12,6 +12,33 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        <!-- Datepicker -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+
+        <!-- Timepicker -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+        <!-- Datepicker -->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <!-- Timepicker -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+        <script>
+        // Datepicker
+        $( function() {
+            $( "#datepicker" ).datepicker({dateFormat: "dd-mm-yy"});
+        } );
+
+        // Timepicker
+        $(document).ready(function(){
+            $('input.timepicker').timepicker({});
+        });
+        </script>
+        
         
 
         @livewireStyles

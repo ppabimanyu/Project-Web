@@ -48,9 +48,11 @@
                         International Youth Conference 6.0
                     </p>
                     <hr><br>
-                    <p class="text-gray-600 font-light text-md overflow-auto">
+                    <p class="text-gray-600 font-light text-md overflow-auto mb-5">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab expedita dolorum quis neque in rerum et alias id dolore animi? Vel libero debitis animi beatae assumenda delectus omnis, excepturi neque!
                     </p>
+                    <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">Link <a href="" class="">www.example.com</a></p>
+                    
                 </div>
             </div>
         </div>

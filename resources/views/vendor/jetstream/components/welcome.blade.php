@@ -5,6 +5,7 @@
             <img class="w-full rounded-full" src="/assets/img/Hands - App.png" alt="">
         </a>
     </div>
+    <!-- <p>{{ Auth::user()->email }}</p> -->
     <div class="overflow-hidden shadow-lg hover:shadow-xl rounded-2xl h-90 max-h-90 w-full md:w-80 cursor-pointer transform hover:-translate-y-2 transform hover:scale-105 ">
         <a href="{{url('/detail')}}" class="w-full block h-full p-5 bg-white">
             <img alt="blog photo" src="/assets/img/about-img.svg" class="h-40 w-80 object-cover"/>

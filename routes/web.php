@@ -40,5 +40,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified' ]], function() {
     Route::get('/dashboard', [EventController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/detail/{event}', [EventController::class, 'show'])->name('detail');
     Route::get('/dashboard/create', [EventController::class, 'create'])->name('create');
-    Route::post('/dashboard', [EventController::class, 'store'])->name('store');
+    Route::post('/store', [EventController::class, 'store'])->name('store');
+    Route::delete('/destroy/{event}', [EventController::class, 'destroy'])->name('destroy');
+    Route::get('/dashboard/detail/{event}/edit', [EventController::class, 'edit'])->name('edit');
+    Route::post('/update/{event}', [EventController::class, 'update'])->name('update');
 });

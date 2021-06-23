@@ -85,7 +85,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('edit', compact('event'));
     }
 
     /**
@@ -97,7 +97,28 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'category' => 'required',
+            'time' => 'required',
+            'date' => 'required',
+            'platform' => 'required',
+            'link' => 'required',
+            'description' => 'required',
+            'img' => 'Nullable'
+        ]);
+        
+        Event::where('id', $event->id)
+                ->update([
+                    'title' => $request->title,
+                    'category' => $request->category,
+                    'time' => $request->time,
+                    'date' => $request->date,
+                    'platform' => $request->platform,
+                    'description' => $request->description,
+                    'link' => $request->link
+                ]);
+        return redirect('/dashboard')->with('status', 'Event updated successfully');
     }
 
     /**
@@ -108,6 +129,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        Event::destroy($event->id);
+        return redirect('/dashboard')->with('status', 'Event has been deleted');
+
     }
 }

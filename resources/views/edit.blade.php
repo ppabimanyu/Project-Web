@@ -8,7 +8,7 @@
                 {{ __('/') }}
             </h2>
             <a href="" class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Input Data') }}
+                {{ __('Edit') }}
             </a>
         </div>
     </x-slot>
@@ -17,13 +17,13 @@
         <div class="container mx-auto md:p-6 p-4 bg-white shadow sm:rounded-2xl">               
             <div class="md:grid md:grid-cols-6 md:gap-4 px-8">
                 <div class="mt-5 md:mt-0 md:col-span-3">
-                    <form action="/store" method="post" class="sm:overflow-hidden">
+                    <form action="/update/{{$event->id}}" method="post" class="sm:overflow-hidden">
                     @csrf
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                             <div class="grid grid-cols-3 gap-6">
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="title" class="block text-md font-medium text-gray-700">Title</label>
-                                    <input type="text" id="title" name="title" autocomplete="title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md rounded-md border-gray-300 @error('title') border-red-500 @enderror" placeholder="Title" value="{{ old('title') }}">
+                                    <input type="text" id="title" name="title" autocomplete="title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md rounded-md border-gray-300 @error('title') border-red-500 @enderror" placeholder="Title" value="{{ $event->title}}">
                                     @error('title')
                                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                                     @enderror
@@ -42,21 +42,21 @@
                                 </div>
                                 <div class="col-span-3 sm:col-span-1">
                                     <label for="time" class="block text-md font-medium text-gray-700">Time</label>
-                                    <input type="time" id="time" name="time" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md @error('time') border-red-500 @enderror" placeholder="hh:mm" value="{{ old('time') }}">
+                                    <input type="time" id="time" name="time" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md @error('time') border-red-500 @enderror" placeholder="hh:mm" value="{{ $event->time }}">
                                     @error('time')
                                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="col-span-3 sm:col-span-2">
                                     <label for="date" class="block text-md font-medium text-gray-700">Date</label>
-                                    <input type="date" data-date-format="YYYY MMMM DD" id="date" name="date" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md @error('date') border-red-500 @enderror" placeholder="yyyy-mm-dd" value="{{ old('date') }}">
+                                    <input type="date" data-date-format="YYYY MMMM DD" id="date" name="date" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md @error('date') border-red-500 @enderror" placeholder="yyyy-mm-dd" value="{{ $event->date }}">
                                     @error('date')
                                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-1">
                                     <label for="platform" class="block text-md font-medium text-gray-700">Platform</label>
-                                    <input type="text" id="platform" autocomplete="given-name" name="platform" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md @error('platform') border-red-500 @enderror" placeholder="Zoom" value="{{ old('platform') }}">
+                                    <input type="text" id="platform" autocomplete="given-name" name="platform" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md border-gray-300 rounded-md @error('platform') border-red-500 @enderror" placeholder="Zoom" value="{{ $event->platform }}">
                                     @error('platform')
                                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                                     @enderror
@@ -69,7 +69,7 @@
                                         <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-md">
                                             http://
                                         </span>
-                                        <input type="text" id="link" name="link" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-md border-gray-300 @error('link') border-red-500 @enderror" placeholder="www.example.com" value="{{ old('link') }}">
+                                        <input type="text" id="link" name="link" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-md border-gray-300 @error('link') border-red-500 @enderror" placeholder="www.example.com" value="{{ $event->link }}">
                                     </div>
                                     @error('link')
                                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
@@ -82,7 +82,7 @@
                                     Description
                                 </label>
                                 <div class="mt-1">
-                                    <textarea id="about" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-md border border-gray-300 rounded-md @error('description') border-red-500 @enderror" placeholder="Description" value="{{ old('description') }}"></textarea>
+                                    <textarea id="about" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-md border border-gray-300 rounded-md @error('description') border-red-500 @enderror" placeholder="Description">{{ $event->description }}</textarea>
                                 </div>
                                 @error('description')
                                     <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>

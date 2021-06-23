@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/', [EventController::class, 'display'])->name('display');
+Route::get('/details/{event}', [EventController::class, 'displayShow'])->name('displayShow');
 
 Route::get('/portfolio-details', function () {
     return view('portfolio-details');

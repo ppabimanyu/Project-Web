@@ -1,5 +1,5 @@
 <div class="md:h-6"></div>
-<nav x-data="{ open: false }" class="container mx-auto bg-white border-b border-gray-100 p-4 rounded-3xl">
+<nav x-data="{ open: false }" class="container mx-auto bg-white border-b border-gray-100 p-4 rounded-3xl shadow-sm">
     <!-- Primary Navigation Menu -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -7,7 +7,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <h1 class="text-5xl">LiveIn</h1>
+                        <h1 class="text-5xl font-bold">LiveIn</h1>
                     </a>
                 </div>
 

@@ -794,31 +794,36 @@ section {
   box-shadow: 0px 0 30px rgba(122, 105, 96, 0.08);
   font-size: 16px;
   color: rgb(86, 86, 86);
+  height: 275px;
 }
 
 .portfolio-details .portfolio-info h3 {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #eee;
   color: #111;
 }
 
 .portfolio-details .portfolio-info i {
   margin-top: 10px;
+  display: block;
 }
 
 .portfolio-details .portfolio-description {
   padding: 30px;
-  margin-top: 30px;
+  margin-top: 20px;
   box-shadow: 0px 0 30px rgba(122, 105, 96, 0.08);
+  height: 425px;
 }
 
 .portfolio-details .portfolio-description h2 {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
   font-size: 26px;
   font-weight: 700;
-  margin-bottom: 20px;
 }
 
 .portfolio-details .portfolio-description p {
@@ -1191,11 +1196,10 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #fff;
   padding: 0 0 30px 0;
   color: #212529;
   font-size: 14px;
-  background: #fef8f5;
+  background: #ffe6da;
 }
 
 #footer .footer-newsletter {
@@ -1252,7 +1256,8 @@ section {
 
 #footer .footer-top {
   padding: 60px 0 30px 0;
-  background: #fff;
+  background: #fdf4ef;
+;
 }
 
 #footer .footer-top .footer-contact {

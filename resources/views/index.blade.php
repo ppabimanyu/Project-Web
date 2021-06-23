@@ -152,128 +152,32 @@
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Seminar</li>
-              <li data-filter=".filter-card">Kesehatan</li>
-              <li data-filter=".filter-web">Gaming</li>
+              <li data-filter=".Seminar">Seminar</li>
+              <li data-filter=".Kesehatan">Kesehatan</li>
+              <li data-filter=".Gaming">Gaming</li>
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-app">
-          <a href="portfolio-details" class="link-detail">
+        @foreach($events as $event)
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
+          <a href="/details/{{$event->id}}" class="link-detail">
             <div class="icon-box">
-            <img src="/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <h4 class="title">International Youth Conference 6.0</h4>
+            <img src="/assets/img/portfolio/portfolio-1.jpg" class="" alt="" style="width:100%; height:200px; object-fit: cover;
+">
+              <h4 class="title mt-2">{{$event->title}}</h4>
               <p class="description">
-                <i class="bi bi-bookmark-fill"> Seminar</i><br>
-                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill"> Zoom</i>
+                <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
+                <i class="bi bi-stopwatch"> {{$event->time}}</i><br>
+                <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
+                <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
               </p>
             </div>
           </a>
           </div>
-
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-web">
-          <a href="portfolio-details" class="link-detail">
-            <div class="icon-box">
-            <img src="/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <h4 class="title">BATTLEGROUND MOBILE</h4>
-              <p class="description">
-                <i class="bi bi-bookmark-fill"> Gaming</i><br>
-                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill"> Youtube</i>
-              </p>
-            </div>
-          </a>
-          </div>
-
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-card">
-          <a href="portfolio-details" class="link-detail">
-            <div class="icon-box">
-            <img src="/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <h4 class="title">Tips Jitu Cegah Virus Corona</h4>
-              <p class="description">
-                <i class="bi bi-bookmark-fill"> Kesehatan</i><br>
-                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill"> Google Meet</i>
-              </p>
-            </div>
-          </a>
-          </div>
-
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-app">
-            <a href="portfolio-details" class="link-detail">
-            <div class="icon-box">
-                <img src="/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                <h4 class="title">WEBINAR HIMNI 2.0</h4>
-                <p class="description">
-                <i class="bi bi-bookmark-fill"> Seminar</i><br>
-                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill"> Zoom</i>
-              </p>
-              </div>
-            </a>
-            </div>
-
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-app">
-          <a href="portfolio-details" class="link-detail">
-            <div class="icon-box">
-            <img src="/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <h4 class="title">National Technopreneur Webinar</h4>
-              <p class="description">
-                <i class="bi bi-bookmark-fill"> Seminar</i><br>
-                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill"> Zoom</i>
-              </p>
-            </div>
-          </a>
-          </div>
-
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-web">
-          <a href="portfolio-details" class="link-detail">
-            <div class="icon-box">
-            <img src="/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <h4 class="title">RUSH GAMEPLAY + ELITE CUSTOMS</h4>
-              <p class="description">
-                <i class="bi bi-bookmark-fill"> Gaming</i><br>
-                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill"> Nimo TV</i>
-              </p>
-            </div>
-          </a>
-          </div>
-
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-card">
-          <a href="portfolio-details" class="link-detail">
-            <div class="icon-box">
-            <img src="/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <h4 class="title">How To Get Fit & Healthy</h4>
-              <p class="description">
-                <i class="bi bi-bookmark-fill"> Kesehatan</i><br>
-                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill"> Youtube</i>
-              </p>
-            </div>
-          </a>
-          </div>
-
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-app">
-            <a href="portfolio-details" class="link-detail">
-            <div class="icon-box">
-                <img src="/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                <h4 class="title">ENVIROMENTAL ACTION (E-CTION)</h4>
-                <p class="description">
-                <i class="bi bi-bookmark-fill"> Seminar</i><br>
-                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill"> Zoom</i>
-              </p>
-              </div>
-            </a>
-            </div>
-          </div>
-        </div>
-          
+          @endforeach
+        </div>  
       </div>
     </section><!-- End Services Section -->
 

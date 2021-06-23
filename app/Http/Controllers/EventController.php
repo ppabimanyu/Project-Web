@@ -10,7 +10,7 @@ class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Menamplikan data sesuai email di dashboard
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -21,8 +21,31 @@ class EventController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     * Menapilkan semua data 
+     * @return \Illuminate\Http\Response
+     */
+    public function display()
+    {
+        return view('index', [
+            'events' => Event::latest()->get()
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     * Menampilkan detail
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function displayShow(Event $event)
+    {
+        return view('index-details', compact('event'));
+    }
+
+    /**
      * Show the form for creating a new resource.
-     *
+     * Mengarahkan ke view input
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -32,7 +55,7 @@ class EventController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * Input data ke database
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -68,7 +91,7 @@ class EventController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * Menampilkan detail di dashboard
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
@@ -79,7 +102,7 @@ class EventController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * Mengarahkan ke view edit
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
@@ -90,7 +113,7 @@ class EventController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * Menimpa data lama dengan data baru
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
@@ -123,7 +146,7 @@ class EventController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * Menghapus data di database sesuai id
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */

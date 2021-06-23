@@ -105,37 +105,23 @@
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper-container">
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="/assets/img/portfolio/portfolio-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="/assets/img/portfolio/portfolio-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="/assets/img/portfolio/portfolio-3.jpg" alt="">
-                </div>
-
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
+            <img src="/assets/img/portfolio/portfolio-1.jpg" alt="" style="width: 100%; height:720px; object-fit: cover;
+">
           </div>
 
           <div class="col-lg-4">
             <div class="portfolio-info">
               <h3>Event information</h3>
-                <i class="bi bi-bookmark-fill">  Seminar</i><br>
-                <i class="bi bi-stopwatch">  01 Jun 2021 - 07 Jul 2021</i><br>
-                <i class="bi bi-geo-alt-fill">  Zoom</i>
+                <i class="bi bi-bookmark-fill">  {{$event->category}}</i>
+                <i class="bi bi-stopwatch">  {{$event->time}}</i>
+                <i class="bi bi-calendar-event">  {{$event->date}}</i>
+                <i class="bi bi-geo-alt-fill">  {{$event->platform}}</i>
+                <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
             </div>
-            <div class="portfolio-description">
-              <h2>This is an example of event detail</h2>
+            <div class="portfolio-description overflow-auto">
+              <h2>{{$event->title}}</h2>
               <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                {{$event->description}}
               </p>
             </div>
           </div>

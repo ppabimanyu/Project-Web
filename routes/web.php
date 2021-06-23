@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -37,7 +37,8 @@ Route::get('/portfolio-details', function () {
 // })->name('dashboard');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified' ]], function() {
-    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
-    Route::get('/detail', [DashboardController::class, 'index'])->name('detail');
-    Route::get('/input', [DashboardController::class, 'create'])->name('input');
+    Route::get('/dashboard', [EventController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/detail/{event}', [EventController::class, 'show'])->name('detail');
+    Route::get('/dashboard/create', [EventController::class, 'create'])->name('create');
+    Route::post('/dashboard', [EventController::class, 'store'])->name('store');
 });

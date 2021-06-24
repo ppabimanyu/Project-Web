@@ -36,12 +36,12 @@
                     <a href="{{url('/dashboard/create')}}">
                         <div class="overflow-hidden rounded-lg h-90 w-full py-5">
                             <div>
-                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-yellow-600">
                                     <div class="space-y-1 text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400 transform hover:scale-110 hover:text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                     </svg>
-                                    <div class="flex text-md text-gray-600">
+                                    <div class="flex text-md text-gray-600 hover:text-yellow-600">
                                         <p class="pl-1">Create New Event</p>
                                     </div>
                                     </div>
@@ -54,14 +54,15 @@
                     <h1 class="flex justify-center text-gray-500 font-bold text-4xl">Your Event</h1>
                 </div>
                 @foreach($events as $event)
-                <div class="overflow-hidden shadow-lg hover:shadow-xl rounded-2xl h-90 max-h-90 w-full md:w-80 cursor-pointer transform hover:-translate-y-2 transform hover:scale-105 mx-auto">
+                <div class="overflow-hidden shadow-lg hover:shadow-xl rounded-2xl h-100 max-h-100 w-full md:w-80 cursor-pointer transform hover:-translate-y-2 transform hover:scale-105 mx-auto col-span-5 md:col-span-1">
                     <a href="/dashboard/detail/{{$event->id}}" class="w-full block h-full p-5 bg-white">
                     @if(($event->img)===null)
-                        <img alt="blog photo" src="/assets/img/about-img.svg" class="h-40 w-80 object-cover"/>
+                        <img alt="blog photo" src="/assets/img/about-img.svg" class="h-40 w-full object-cover rounded-xl"/>
                     @else
-                        <img alt="blog photo" src="/storage/images/{{$event->img}}" class="h-40 w-80 object-cover"/>
+                        <img alt="blog photo" src="/storage/images/{{$event->img}}" class="h-40 w-full object-cover rounded-lg"/>
                     @endif
-                        <div class="bg-white dark:bg-gray-800 w-full p-4">
+                    <hr class="mt-2">
+                        <div class="bg-white dark:bg-gray-800 w-full p-2">
                             <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
                                 {{$event->title}}
                             </p>
@@ -90,6 +91,8 @@
                                 <p class="text-gray-600 ml-2">{{$event->platform}}</p>
                             </div>
                         </div>
+                        <hr class="mb-2">
+                        <p class="font-light text-gray-600 text-right">{{$event->created_at->diffForHumans()}}</p>
                     </a>
                 </div>
                 @endforeach

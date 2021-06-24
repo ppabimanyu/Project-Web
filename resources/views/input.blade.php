@@ -8,7 +8,7 @@
                 {{ __('/') }}
             </h2>
             <a href="" class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Input Data') }}
+                {{ __('Create') }}
             </a>
         </div>
     </x-slot>

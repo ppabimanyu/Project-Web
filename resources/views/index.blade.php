@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ninestars Bootstrap Template - Index</title>
+  <title>LiveIn</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/icon.png" rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -165,9 +165,9 @@
           <a href="/details/{{$event->id}}" class="link-detail">
             <div class="icon-box">
             @if(($event->img)===null)
-            <img src="/assets/img/about-img.svg" class="" alt="" style="width:100%; height:200px; object-fit: cover;">
+            <img src="/assets/img/about-img.svg" class="rounded-3" alt="" style="width:100%; height:200px; object-fit: cover;">
             @else
-            <img src="/storage/images/{{$event->img}}" class="" alt="" style="width:100%; height:200px; object-fit: cover;">
+            <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg" style="width:100%; height:200px; object-fit: cover;">
             @endif
               <h4 class="title mt-2">{{$event->title}}</h4>
               <p class="description">
@@ -176,6 +176,8 @@
                 <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
                 <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
               </p>
+            <hr class="mb-2">
+            <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
             </div>
           </a>
           </div>

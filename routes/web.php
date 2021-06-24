@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,29 +13,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-Route::get('/', [EventController::class, 'display'])->name('display');
+Route::get('/', [EventController::class, 'display'])->name('/');
 Route::get('/details/{event}', [EventController::class, 'displayShow'])->name('displayShow');
-
-Route::get('/portfolio-details', function () {
-    return view('portfolio-details');
-});
-// Route::get('/input', function () {
-//     return view('input');
-// });
-// Route::get('/detail', function () {
-//     return view('detail');
-// });
-
-// Route::get('/portfolio-details', function () {
-//     return view('portfolio-details');
-// });
-
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified' ]], function() {
     Route::get('/dashboard', [EventController::class, 'index'])->name('dashboard');

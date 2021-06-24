@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class EventController extends Controller
 {
@@ -69,8 +70,11 @@ class EventController extends Controller
             'platform' => 'required',
             'link' => 'required',
             'description' => 'required',
-            'img' => 'Nullable'
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
         ]);
+
+        $imageName = time().'.'.$request->img->extension();       
+        $request->img->move(public_path('/storage/images'), $imageName);
 
         Event::create([
             'email' => Auth::user()->email,
@@ -81,12 +85,12 @@ class EventController extends Controller
             'platform' => $request->platform,
             'link' => $request->link,
             'description' => $request->description,
-            'img' => $request->img
+            'img' => $imageName
         ]);
 
         // Event::create($request->all());
 
-        return redirect('/dashboard')->with('status', 'New event created successfully');
+        return redirect('/dashboard')->with('status', 'Event '.$request->title.' created successfully');
     }
 
     /**
@@ -128,9 +132,17 @@ class EventController extends Controller
             'platform' => 'required',
             'link' => 'required',
             'description' => 'required',
-            'img' => 'Nullable'
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240|Nullable'
         ]);
-        
+
+        // Jika upload file baru, file lama yang digunakan
+        if(($request->img) !== null){
+            if(File::exists(public_path('storage/images/'.$event->img))){
+                File::delete(public_path('storage/images/'.$event->img));}
+            $imageName = time().'.'.$request->img->extension();       
+            $request->img->move(public_path('/storage/images'), $imageName);}
+        else{$imageName = $event->img;}
+      
         Event::where('id', $event->id)
                 ->update([
                     'title' => $request->title,
@@ -139,7 +151,8 @@ class EventController extends Controller
                     'date' => $request->date,
                     'platform' => $request->platform,
                     'description' => $request->description,
-                    'link' => $request->link
+                    'link' => $request->link,
+                    'img' => $imageName
                 ]);
         return redirect('/dashboard')->with('status', 'Event updated successfully');
     }
@@ -152,7 +165,13 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+        if(File::exists(public_path('storage/images/'.$event->img))){
+            File::delete(public_path('storage/images/'.$event->img));
+        }else{
+            dd('File does not exists.');
+        }
         Event::destroy($event->id);
+
         return redirect('/dashboard')->with('status', 'Event has been deleted');
 
     }

@@ -17,7 +17,7 @@
         <div class="container mx-auto md:p-6 p-4 bg-white shadow sm:rounded-2xl">               
             <div class="md:grid md:grid-cols-6 md:gap-4 px-8">
                 <div class="mt-5 md:mt-0 md:col-span-3">
-                    <form action="/update/{{$event->id}}" method="post" class="sm:overflow-hidden">
+                    <form action="/update/{{$event->id}}" method="post" class="sm:overflow-hidden" enctype="multipart/form-data">
                     @csrf
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                             <div class="grid grid-cols-3 gap-6">
@@ -91,7 +91,6 @@
 
                             <div>
                                 <label class="flex text-md font-medium text-gray-700">
-                                <!-- <label class="block text-md font-medium text-gray-700"> -->
                                     Cover photo  <p class="text-red-600 font-bold">  Coming Soon!</p>
                                 </label>
                                 <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
@@ -101,16 +100,17 @@
                                     </svg>
                                     <div class="flex text-md text-gray-600">
                                         <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                        <span>Upload a file</span>
-                                        <input id="file-upload" type="file" name="img" class="sr-only" disabled>
+                                        <input id="file-upload" type="file" name="img" class="not-sr-only">
                                         </label>
-                                        <p class="pl-1">or drag and drop</p>
                                     </div>
                                         <p class="text-xs text-gray-500">
                                             PNG, JPG, GIF up to 10MB
                                         </p>
                                     </div>
                                 </div>
+                                @error('img')
+                                    <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

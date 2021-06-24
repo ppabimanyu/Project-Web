@@ -56,7 +56,11 @@
                 @foreach($events as $event)
                 <div class="overflow-hidden shadow-lg hover:shadow-xl rounded-2xl h-90 max-h-90 w-full md:w-80 cursor-pointer transform hover:-translate-y-2 transform hover:scale-105 mx-auto">
                     <a href="/dashboard/detail/{{$event->id}}" class="w-full block h-full p-5 bg-white">
+                    @if(($event->img)===null)
                         <img alt="blog photo" src="/assets/img/about-img.svg" class="h-40 w-80 object-cover"/>
+                    @else
+                        <img alt="blog photo" src="/storage/images/{{$event->img}}" class="h-40 w-80 object-cover"/>
+                    @endif
                         <div class="bg-white dark:bg-gray-800 w-full p-4">
                             <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
                                 {{$event->title}}

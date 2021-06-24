@@ -164,8 +164,11 @@
           <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
           <a href="/details/{{$event->id}}" class="link-detail">
             <div class="icon-box">
-            <img src="/assets/img/portfolio/portfolio-1.jpg" class="" alt="" style="width:100%; height:200px; object-fit: cover;
-">
+            @if(($event->img)===null)
+            <img src="/assets/img/about-img.svg" class="" alt="" style="width:100%; height:200px; object-fit: cover;">
+            @else
+            <img src="/storage/images/{{$event->img}}" class="" alt="" style="width:100%; height:200px; object-fit: cover;">
+            @endif
               <h4 class="title mt-2">{{$event->title}}</h4>
               <p class="description">
                 <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>

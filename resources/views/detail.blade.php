@@ -16,7 +16,11 @@
     <div class="container mx-auto">
         <div class="md:grid md:grid-rows-4 md:grid-cols-3 gap-4 md:py-0">
             <div class="w-full block h-full p-5 bg-white col-span-2 row-span-3 shadow-lg hover:shadow-xl rounded-2xl mb-2 md:mb-0">
-                <img alt="blog photo" src="/assets/img/about-img.svg" class="h-full w-full object-cover"/>
+                @if(($event->img)===null)
+                    <img alt="blog photo" src="/assets/img/about-img.svg" class="h-full w-full object-cover"/>
+                @else
+                    <img alt="blog photo" src="/storage/images/{{$event->img}}" class="h-full w-full object-cover"/>
+                @endif
             </div>
             <div class="w-full block h-full p-5 bg-white col-span-1 row-span-1 shadow-lg hover:shadow-xl rounded-2xl p-8 mb-2 md:mb-0">
                 <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">

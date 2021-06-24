@@ -91,7 +91,7 @@
 
                             <div>
                                 <label class="flex text-md font-medium text-gray-700">
-                                    Cover photo  <p class="text-red-600 font-bold">  Coming Soon!</p>
+                                    Cover photo
                                 </label>
                                 <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                     <div class="space-y-1 text-center">

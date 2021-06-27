@@ -73,7 +73,7 @@ class EventController extends Controller
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
         ]);
 
-        $imageName = time().'.'.$request->img->extension();       
+        $imageName = time()."-".uniqid()."-".$request->img->getClientOriginalName();   
         $request->img->move(public_path('/storage/images'), $imageName);
 
         Event::create([
@@ -139,7 +139,7 @@ class EventController extends Controller
         if(($request->img) !== null){
             if(File::exists(public_path('storage/images/'.$event->img))){
                 File::delete(public_path('storage/images/'.$event->img));}
-            $imageName = time().'.'.$request->img->extension();       
+            $imageName = time()."-".uniqid()."-".$request->img->getClientOriginalName();         
             $request->img->move(public_path('/storage/images'), $imageName);}
         else{$imageName = $event->img;}
       

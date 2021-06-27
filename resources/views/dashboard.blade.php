@@ -55,7 +55,9 @@
                 </div>
                 @foreach($events as $event)
                 <div class="overflow-hidden shadow-lg hover:shadow-xl rounded-2xl h-100 max-h-100 w-full md:w-80 cursor-pointer transform hover:-translate-y-2 transform hover:scale-105 mx-auto col-span-5 md:col-span-1">
-                    <a href="/dashboard/detail/{{$event->id}}" class="w-full block h-full p-5 bg-white">
+                    <form action="/dashboard/detail/{{$event->id}}" method="post">
+                    @csrf
+                    <button type="submit" class="w-full block h-full p-5 bg-white">
                     @if(($event->img)===null)
                         <img alt="blog photo" src="/assets/img/about-img.svg" class="h-40 w-full object-cover rounded-xl"/>
                     @else
@@ -93,7 +95,8 @@
                         </div>
                         <hr class="mb-2">
                         <p class="font-light text-gray-600 text-right">{{$event->created_at->diffForHumans()}}</p>
-                    </a>
+                    </button>
+                    </form>
                 </div>
                 @endforeach
             </div>

@@ -105,9 +105,9 @@
         <div class="row gy-4">
           <div class="col-lg-8">
             @if(($event->img)===null)
-            <img src="/assets/img/about-img.svg" alt="" style="width: 100%; height:720px; object-fit: cover;">
+            <img src="/assets/img/about-img.svg" alt="">
             @else
-            <img src="/storage/images/{{$event->img}}" alt="" style="width: 100%; height:720px; object-fit: cover;">
+            <img src="/storage/images/{{$event->img}}" alt="">
             @endif
           </div>
 

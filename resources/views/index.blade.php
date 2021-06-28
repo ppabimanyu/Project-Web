@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>LiveIn</title>
+  <title>Ninestars Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/icon.png" rel="icon">
+  <link href="/assets/img/favicon.png" rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -152,37 +152,128 @@
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".Seminar">Seminar</li>
-              <li data-filter=".Kesehatan">Kesehatan</li>
-              <li data-filter=".Gaming">Gaming</li>
+              <li data-filter=".filter-app">Seminar</li>
+              <li data-filter=".filter-card">Kesehatan</li>
+              <li data-filter=".filter-web">Gaming</li>
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
-        @foreach($events as $event)
-          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
-          <a href="/details/{{$event->id}}" class="link-detail">
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-app">
+          <a href="portfolio-details" class="link-detail">
             <div class="icon-box">
-            @if(($event->img)===null)
-            <img src="/assets/img/about-img.svg" class="rounded-3" alt="" style="width:100%; height:200px; object-fit: cover;">
-            @else
-            <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg" style="width:100%; height:200px; object-fit: cover;">
-            @endif
-              <h4 class="title mt-2">{{$event->title}}</h4>
+            <img src="/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <h4 class="title">International Youth Conference 6.0</h4>
               <p class="description">
-                <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
-                <i class="bi bi-stopwatch"> {{$event->time}}</i><br>
-                <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
-                <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
+                <i class="bi bi-bookmark-fill"> Seminar</i><br>
+                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
+                <i class="bi bi-geo-alt-fill"> Zoom</i>
               </p>
-            <hr class="mb-2">
-            <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
             </div>
           </a>
           </div>
-          @endforeach
-        </div>  
+
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-web">
+          <a href="portfolio-details" class="link-detail">
+            <div class="icon-box">
+            <img src="/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+              <h4 class="title">BATTLEGROUND MOBILE</h4>
+              <p class="description">
+                <i class="bi bi-bookmark-fill"> Gaming</i><br>
+                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
+                <i class="bi bi-geo-alt-fill"> Youtube</i>
+              </p>
+            </div>
+          </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-card">
+          <a href="portfolio-details" class="link-detail">
+            <div class="icon-box">
+            <img src="/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+              <h4 class="title">Tips Jitu Cegah Virus Corona</h4>
+              <p class="description">
+                <i class="bi bi-bookmark-fill"> Kesehatan</i><br>
+                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
+                <i class="bi bi-geo-alt-fill"> Google Meet</i>
+              </p>
+            </div>
+          </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-app">
+            <a href="portfolio-details" class="link-detail">
+            <div class="icon-box">
+                <img src="/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+                <h4 class="title">WEBINAR HIMNI 2.0</h4>
+                <p class="description">
+                <i class="bi bi-bookmark-fill"> Seminar</i><br>
+                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
+                <i class="bi bi-geo-alt-fill"> Zoom</i>
+              </p>
+              </div>
+            </a>
+            </div>
+
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-app">
+          <a href="portfolio-details" class="link-detail">
+            <div class="icon-box">
+            <img src="/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <h4 class="title">National Technopreneur Webinar</h4>
+              <p class="description">
+                <i class="bi bi-bookmark-fill"> Seminar</i><br>
+                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
+                <i class="bi bi-geo-alt-fill"> Zoom</i>
+              </p>
+            </div>
+          </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-web">
+          <a href="portfolio-details" class="link-detail">
+            <div class="icon-box">
+            <img src="/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+              <h4 class="title">RUSH GAMEPLAY + ELITE CUSTOMS</h4>
+              <p class="description">
+                <i class="bi bi-bookmark-fill"> Gaming</i><br>
+                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
+                <i class="bi bi-geo-alt-fill"> Nimo TV</i>
+              </p>
+            </div>
+          </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-card">
+          <a href="portfolio-details" class="link-detail">
+            <div class="icon-box">
+            <img src="/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+              <h4 class="title">How To Get Fit & Healthy</h4>
+              <p class="description">
+                <i class="bi bi-bookmark-fill"> Kesehatan</i><br>
+                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
+                <i class="bi bi-geo-alt-fill"> Youtube</i>
+              </p>
+            </div>
+          </a>
+          </div>
+
+          <div class="col-md-6 col-lg-3 align-items-stretch portfolio-item filter-app">
+            <a href="portfolio-details" class="link-detail">
+            <div class="icon-box">
+                <img src="/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+                <h4 class="title">ENVIROMENTAL ACTION (E-CTION)</h4>
+                <p class="description">
+                <i class="bi bi-bookmark-fill"> Seminar</i><br>
+                <i class="bi bi-stopwatch"> 01 Jun 2021 - 07 Jul 2021</i><br>
+                <i class="bi bi-geo-alt-fill"> Zoom</i>
+              </p>
+              </div>
+            </a>
+            </div>
+          </div>
+        </div>
+          
       </div>
     </section><!-- End Services Section -->
 
@@ -351,55 +442,55 @@
         <ul class="faq-list" data-aos="fade-up" data-aos-delay="100">
 
           <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Bagaimana cara mendaftar di LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq1" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+              Untuk mendaftar akun dapat dengan cara tekan tombol pada pojok kanan atas "Get Started" kemudian isi data yang ada, apabila telah memiliki akun dapat menekan tombol "Already registered?".
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Apakah kita memasang event di LiveIn diharuskan membayar? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq2" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              Memasang event pada Livein tidak diharuskan membayar, kami menyediakannya 100% gratis tanpa biaya apapun.
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Bagaimana jika ingin menghapus event yang sudah kita posting di LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq3" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+              Pada menu "Your Event" terdapat tampilan jadwal event yang telah dibuat, untuk menghapus event dapat dengan cara tekan event yang ingin dihapus kemudian terdapat pilihan "Edit" untuk mengedit event dan "Deleted" untuk menghapus event.
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Apakah kita bisa memasang lebih dari satu jadwal event di LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq4" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              Pada Livein anda bisa memasang lebih dari satu jadwal event sesuai dengan yang dibutuhkan.
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Bagaimana cara kerja LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq5" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+              Pertama membuat akun Livein terlebih dahulu. Setelah itu membuat event dengan mengisi data event kemudian tunggu hingga event dimulai
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Bagaimana cara mengatasi error pada saat mendaftar di LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq6" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+              Apabila terjadi error saat mendaftar akun, Anda dapat menghubungi customer service melalui email yang telah disediakan.
               </p>
             </div>
           </li>
@@ -422,10 +513,10 @@
 
           <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="member">
-              <img src="/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="/assets/img/team/mita.jpeg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Walter White</h4>
+                  <h4>Mita Unziya</h4>
                   <span>Chief Executive Officer</span>
                 </div>
                 <div class="social">
@@ -440,10 +531,10 @@
 
           <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
             <div class="member">
-              <img src="/assets/img/team/team-2.jpg" class="img-fluid" alt="">
+              <img src="/assets/img/team/rifky.jpeg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Sarah Jhonson</h4>
+                  <h4>Rifky Roudana Imani Cahya</h4>
                   <span>Product Manager</span>
                 </div>
                 <div class="social">
@@ -461,7 +552,7 @@
               <img src="/assets/img/team/team-3.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>William Anderson</h4>
+                  <h4>Putra Prasessia Abimanyu</h4>
                   <span>CTO</span>
                 </div>
                 <div class="social">
@@ -476,10 +567,10 @@
 
           <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
             <div class="member">
-              <img src="/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+              <img src="/assets/img/team/rian2.jpeg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Amanda Jepson</h4>
+                  <h4>Muhammad Rian </h4>
                   <span>Accountant</span>
                 </div>
                 <div class="social">
@@ -494,10 +585,10 @@
 
           <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
             <div class="member">
-              <img src="/assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              <img src="/assets/img/team/anton.jpeg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>William Anderson</h4>
+                  <h4>Anton Setyo</h4>
                   <span>CTO</span>
                 </div>
                 <div class="social">
@@ -639,11 +730,11 @@
           <div class="col-lg-4 col-md-6 footer-contact">
             <h3>Ninestars</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Jl. Mastrip No.164 <br>
+              Kabupaten Jember<br>
+              Provinsi Jawa Timur<br><br>
+              <strong>Phone:</strong> +6282335772936<br>
+              <strong>Email:</strong> LiveInStream@gmail.com<br>
             </p>
           </div>
 
@@ -671,7 +762,7 @@
 
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <p>Agar kalian tidak ketinggalan berita, follow social network kita untuk informasi terbaru</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>

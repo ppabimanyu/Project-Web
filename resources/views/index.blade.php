@@ -85,7 +85,7 @@
           <h1>Bettter digital experience with LiveIn</h1>
           <h2>Make your live broadcast reach many people</h2>
           <div>
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="{{ route('register') }}" class="btn-get-started scrollto">Get Started</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -137,14 +137,12 @@
           <p>Check out the great live broadcasts you can find</p>
         </div>
 
-        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <button id="button-addon2" type="submit" class="btn btn-link text-warning"><i class="fa fa-search"></i></button>
-              </div>
-              <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon2" class="form-control border-0 bg-light">
-            </div>
+        <div class="input-group mb-4 border rounded-pill p-1 bg-white">
+          <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon3" class="form-control bg-none border-0 rounded-pill">
+          <div class="input-group-append border-0">
+            <button id="button-addon3" type="button" class="btn btn-link text-success"><i class="fa fa-search"></i></button>
           </div>
+        </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12">
@@ -153,6 +151,7 @@
               <li data-filter=".Seminar">Seminar</li>
               <li data-filter=".Kesehatan">Kesehatan</li>
               <li data-filter=".Gaming">Gaming</li>
+              <li data-filter=".Other">Other</li>
             </ul>
           </div>
         </div>
@@ -160,24 +159,28 @@
         <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
         @foreach($events as $event)
           <div class="col-6 col-sm-6 col-md-4 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
-          <a href="/details/{{$event->id}}" class="link-detail">
-            <div class="icon-box">
-            @if(($event->img)===null)
-            <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
-            @else
-            <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg">
-            @endif
-              <h4 class="title mt-2">{{$event->title}}</h4>
-              <p class="description">
-                <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
-                <i class="bi bi-stopwatch"> {{$event->time}}</i><br>
-                <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
-                <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
-              </p>
-            <hr class="mb-2">
-            <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
-            </div>
-          </a>
+            <a href="/details/{{$event->id}}" class="link-detail">
+              <div class="icon-box">
+                <div class="d-flex p-2">
+                  <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                  <p class="mt-1 ms-2">{{$event->name}}</p>
+                </div>
+                @if(($event->img)===null)
+                <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
+                @else
+                <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg">
+                @endif
+                <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
+                <p class="description">
+                  <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
+                  <i class="bi bi-stopwatch"> {{$event->time}}</i><br>
+                  <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
+                  <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
+                </p>
+                <hr class="mb-2">
+                <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
+              </div>
+            </a>
           </div>
           @endforeach
         </div>  
@@ -298,7 +301,7 @@
 
         <div class="row">
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="member">
               <img src="/assets/img/team/mita.jpeg" class="img-fluid" alt="">
               <div class="member-info">
@@ -316,7 +319,7 @@
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="member">
               <img src="/assets/img/team/rifky.jpeg" class="img-fluid" alt="">
               <div class="member-info">
@@ -334,25 +337,25 @@
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="member">
-              <img src="/assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              <img src="/assets/img/team/Abim.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Putra Prasessia Abimanyu</h4>
                   <span>CTO</span>
                 </div>
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://twitter.com/PpAbimanyu" target="blank"><i class="bi bi-twitter"></i></a>
+                  <a href="https://web.facebook.com/abimanyu.ppa/" target="blank"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/abimanyu_ppa/" target="blank"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/putra-prassiesa-abimanyu-140336213/" target="blank"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="400">
             <div class="member">
               <img src="/assets/img/team/rian2.jpeg" class="img-fluid" alt="">
               <div class="member-info">
@@ -370,7 +373,7 @@
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col" data-aos="zoom-in" data-aos-delay="300">
             <div class="member">
               <img src="/assets/img/team/anton.jpeg" class="img-fluid" alt="">
               <div class="member-info">

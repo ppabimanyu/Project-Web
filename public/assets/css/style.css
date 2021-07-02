@@ -574,21 +574,21 @@ section {
   border-radius: 15px;
   text-align: left;
   border-bottom: 3px solid #fff;
-  height: 340px;
+  height: 400px;
 }
 @media (min-width: 768px) {
   .services .icon-box{
-    height:420px;
+    height:480px;
   }
 }
 @media (max-width: 767px) {
   .services .icon-box{
-    height:370px;
+    height:430px;
   }
 }
 @media (max-width: 575px) {
   .services .icon-box{
-    height:310px;
+    height:380px;
   }
 }
 
@@ -608,7 +608,8 @@ section {
 .services .title {
   font-weight: 700;
   margin-bottom: 15px;
-  font-size: 16px;
+  height:2em;
+  overflow: hidden;
 }
 
 .services .description {

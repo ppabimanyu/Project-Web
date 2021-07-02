@@ -65,7 +65,7 @@
                     @endif
                     <hr class="mt-2">
                         <div class="bg-white dark:bg-gray-800 w-full p-2">
-                            <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+                            <p class="text-gray-800 dark:text-white text-xl font-medium mb-5 text-left break-words" style="height: 2em;">
                                 {{$event->title}}
                             </p>
                             <div class="font-light text-md flex mb-2">

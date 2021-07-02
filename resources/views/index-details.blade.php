@@ -85,23 +85,15 @@
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
       <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
           <h2>Event Details</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">Event</a></li>
-            <li>Event Details</li>
-          </ol>
         </div>
-
       </div>
     </section><!-- Breadcrumbs Section -->
 
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-
         <div class="row gy-4">
           <div class="col-lg-8">
             @if(($event->img)===null)
@@ -121,7 +113,7 @@
                 <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
             </div>
             <div class="portfolio-description overflow-auto">
-              <h2>{{$event->title}}</h2>
+              <h2 class="text-break">{{$event->title}}</h2>
               <p>
                 {{$event->description}}
               </p>

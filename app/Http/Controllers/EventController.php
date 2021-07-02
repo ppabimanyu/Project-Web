@@ -77,6 +77,8 @@ class EventController extends Controller
         $request->img->move(public_path('/storage/images'), $imageName);
 
         Event::create([
+            'foto' => Auth::user()->profile_photo_url,
+            'name' => Auth::user()->name,
             'email' => Auth::user()->email,
             'title' => $request->title,
             'category' => $request->category,

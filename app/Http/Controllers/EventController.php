@@ -45,6 +45,19 @@ class EventController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     * Menampilkan detail
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function viewProfile(Event $event)
+    {
+        $daf = Event::where('email',$event->email)->get();
+        $count = Event::where('email',$event->email)->count();
+        return view('view_profile', compact('event', 'daf', 'count'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      * Mengarahkan ke view input
      * @return \Illuminate\Http\Response
@@ -63,7 +76,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:36',
             'category' => 'required',
             'time' => 'required',
             'date' => 'required',
@@ -127,7 +140,7 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:36',
             'category' => 'required',
             'time' => 'required',
             'date' => 'required',

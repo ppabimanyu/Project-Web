@@ -43,35 +43,13 @@
 
       <div class="logo">
         <h1 class="text-light"><a href="/"><span>LiveIn</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto " href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="/event">Event</a></li>
-          <!-- <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li> -->
-          <li><a class="nav-link scrollto" href="/team">Team</a></li>
-          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> -->
-          <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+          <li><a class="nav-link scrollto" href="/event">Event</a></li>          <li><a class="nav-link scrollto" href="/team">Team</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -96,13 +74,18 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-8">
+            <a href="/profile/{{$event->id}}">
+              <div class="d-flex p-2 m-2 rounded-pill position-absolute text-white" style="background-color:rgba(37, 37, 37, 0.219);">
+                  <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                  <p class="ms-2 mt-2">{{$event->name}}</p>
+              </div>
+            </a>
             @if(($event->img)===null)
             <img src="/assets/img/about-img.svg" alt="">
             @else
             <img src="/storage/images/{{$event->img}}" alt="">
             @endif
           </div>
-
           <div class="col-lg-4">
             <div class="portfolio-info">
               <h3>Event information</h3>
@@ -113,15 +96,22 @@
                 <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
             </div>
             <div class="portfolio-description overflow-auto">
-              <h2 class="text-break">{{$event->title}}</h2>
-              <p>
-                {{$event->description}}
-              </p>
+              <h3 class="text-break fw-bold border-bottom pb-3">Event Organizer</h3>
+              <a href="/profile/{{$event->id}}">
+                <div class="d-flex p-2 mt-4">
+                  <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:30px; height:30px;">
+                  <p class="mt-1 ms-2 text-dark">{{$event->name}}</p>
+                </div>
+              </a>
             </div>
           </div>
-
+          <div class="portfolio-description overflow-auto">
+            <h2 class="text-break">{{$event->title}}</h2>
+            <p>
+              {{$event->description}}
+            </p>
+          </div>
         </div>
-
       </div>
     </section><!-- End Portfolio Details Section -->
 

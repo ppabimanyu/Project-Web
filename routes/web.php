@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [EventController::class, 'display'])->name('/');
+Route::get('/profile/{event}', [EventController::class, 'viewProfile'])->name('/view-profile');
 Route::get('/details/{event}', [EventController::class, 'displayShow'])->name('displayShow');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified' ]], function() {

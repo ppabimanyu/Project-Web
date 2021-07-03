@@ -23,7 +23,7 @@
                             <div class="grid grid-cols-3 gap-6">
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="title" class="block text-md font-medium text-gray-700">Title</label>
-                                    <input type="text" id="title" name="title" autocomplete="title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md rounded-md border-gray-300 @error('title') border-red-500 @enderror" placeholder="Title" value="{{ old('title') }}">
+                                    <input type="text" id="title" name="title" autocomplete="title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md rounded-md border-gray-300 @error('title') border-red-500 @enderror" placeholder="Max 36 Characters" value="{{ old('title') }}">
                                     @error('title')
                                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                                     @enderror

@@ -40,13 +40,10 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
       <div class="logo">
         <h1 class="text-light"><a href="/"><span>LiveIn</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
 
+      </div>
       <nav id="navbar" class="navbar">
         <ul>
           @auth
@@ -54,140 +51,70 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           @endauth
-          <li><a class="nav-link scrollto" href="#services">Event</a></li>
+          <li><a class="nav-link scrollto" href="/">Event</a></li>
           @auth
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           @else
           @endauth
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           @if (Route::has('login'))
-                    @auth
-                    <li><a class="getstarted scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
-                    @else
-                    <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
-                    @endauth
-            @endif
+            @auth
+              <li><a class="getstarted scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
+            @else
+              <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
+            @endauth
+          @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
     </div>
   </header><!-- End Header -->
 
-<!-- ======= Hero Section ======= -->
-@auth
-<div class="py-5"></div>
-@else
-  <section id="hero" class="d-flex align-items-center">
+    <!-- ======= Services Section ======= -->
+    <div class="py-5"></div>
+    <section id="viewProfile" class="bg-white">
     <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Bettter digital experience with LiveIn</h1>
-          <h2>Make your live broadcast reach many people</h2>
-          <div>
-            <a href="{{ route('register') }}" class="btn-get-started scrollto">Get Started</a>
+      <div class="d-flex p-2 border-bottom mb-4 pb-4">
+        <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:100px; height:100px; object-fit: cover">
+        <h1 class="mt-4 ms-4 fw-bold">{{$event->name}}<br>
+          <div class="d-flex">
+            <h1 class="me-2 mt-2 fs-2">Event ({{$count}})</h1>
           </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img">
-          <img src="/assets/img/hero-img.svg" class="img-fluid animated" alt="">
-        </div>
+        </h1>
       </div>
     </div>
-  </section><!-- End Hero -->
 
-  <main id="main">
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="row justify-content-between">
-          <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
-            <img src="/assets/img/about-img.svg" class="img-fluid" alt="" data-aos="zoom-in">
-          </div>
-          <div class="col-lg-6 pt-5 pt-lg-0">
-            <h3 data-aos="fade-up">Apa itu LiveIn?</h3>
-            <p data-aos="fade-up" data-aos-delay="100">
-            LiveIn adalah sebuah website informasi yang memiliki tujuan untuk menyebarkan informasi jadwal livestreaming, seminar, workshop, training, dan lain lain. Dengan adanya LiveIn pengunjung bisa mendapatkan informasi tentang jadwal-jadwal dengan terperinci
-            </p>
-            <div class="row">
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <i class="bx bx-receipt"></i>
-                <h4>Corporis voluptates sit</h4>
-                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-              </div>
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <i class="bx bx-cube-alt"></i>
-                <h4>Ullamco laboris nisi</h4>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  @endauth<!-- End About Section -->
-
-
-    <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Live Event</h2>
-          <p>Check out the great live broadcasts you can find</p>
-        </div>
-
-        <div class="input-group mb-4 border rounded-pill p-1 bg-white">
-          <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon3" class="form-control bg-none border-0 rounded-pill">
-          <div class="input-group-append border-0">
-            <button id="button-addon3" type="button" class="btn btn-link text-success"><i class="fa fa-search"></i></button>
-          </div>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-12">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".Seminar">Seminar</li>
-              <li data-filter=".Kesehatan">Kesehatan</li>
-              <li data-filter=".Gaming">Gaming</li>
-              <li data-filter=".Other">Other</li>
-            </ul>
-          </div>
-        </div>
-
         <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
-        @foreach($events as $event)
-          <div class="col-6 col-sm-6 col-md-4 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
-            <a href="/details/{{$event->id}}" class="link-detail">
-              <div class="icon-box">
-                <div class="d-flex p-2">
-                  <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:30px; height:30px">
-                  <p class="mt-1 ms-2">{{$event->name}}</p>
+          @foreach($daf as $event)
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
+              <a href="/details/{{$event->id}}" class="link-detail">
+                <div class="icon-box">
+                  @if(($event->img)===null)
+                  <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
+                  @else
+                  <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg">
+                  @endif
+                  <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
+                  <p class="description">
+                    <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
+                    <i class="bi bi-stopwatch"> {{$event->time}}</i><br>
+                    <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
+                    <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
+                  </p>
+                  <hr class="mb-2">
+                  <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
                 </div>
-                @if(($event->img)===null)
-                <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
-                @else
-                <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg">
-                @endif
-                <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
-                <p class="description">
-                  <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
-                  <i class="bi bi-stopwatch"> {{$event->time}}</i><br>
-                  <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
-                  <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
-                </p>
-                <hr class="mb-2">
-                <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
-              </div>
-            </a>
-          </div>
+              </a>
+            </div>
           @endforeach
-        </div>  
+        </div>
       </div>
+    </section>
+
     </section><!-- End Services Section -->
 
-    @auth
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
@@ -217,8 +144,6 @@
         </div>
       </div>
     </section>
-    @else
-    @endauth
 
     <!-- ======= F.A.Q Section ======= -->
     <section id="faq" class="faq section-bg">

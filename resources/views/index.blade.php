@@ -162,8 +162,15 @@
             <a href="/details/{{$event->id}}" class="link-detail">
               <div class="icon-box">
                 <div class="d-flex p-2">
-                  <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:30px; height:30px">
-                  <p class="mt-1 ms-2">{{$event->name}}</p>
+                @if(((DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path) === null)
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg>
+                @else
+                  <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                @endif
+                  <p class="mt-1 ms-2">{{(DB::table('users')->where('id', $event->id_user)->first())->name}}</p>
                 </div>
                 @if(($event->img)===null)
                 <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
@@ -173,8 +180,8 @@
                 <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
                 <p class="description">
                   <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
-                  <i class="bi bi-stopwatch"> {{$event->time}}</i><br>
-                  <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
+                  <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i><br>
+                  <i class="bi bi-calendar-event"> {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i><br>
                   <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
                 </p>
                 <hr class="mb-2">

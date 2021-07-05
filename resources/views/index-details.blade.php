@@ -74,10 +74,9 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-8">
-            <a href="/profile/{{$event->id}}">
-              <div class="d-flex p-2 m-2 rounded-pill position-absolute text-white" style="background-color:rgba(37, 37, 37, 0.219);">
-                  <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:30px; height:30px">
-                  <p class="ms-2 mt-2">{{$event->name}}</p>
+            <a href="/profile/{{$event->id_user}}">
+              <div class="d-flex p-3 m-2 rounded-pill position-absolute text-white countdown" data-count="{{$event->date}}" style="background-color:rgba(37, 37, 37, 0.219);">
+                <h4>%d : %h : %m : %s</h4>
               </div>
             </a>
             @if(($event->img)===null)
@@ -90,26 +89,33 @@
             <div class="portfolio-info">
               <h3>Event information</h3>
                 <i class="bi bi-bookmark-fill">  {{$event->category}}</i>
-                <i class="bi bi-stopwatch">  {{$event->time}}</i>
-                <i class="bi bi-calendar-event">  {{$event->date}}</i>
+                <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i>
+                <i class="bi bi-calendar-event">  {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i>
                 <i class="bi bi-geo-alt-fill">  {{$event->platform}}</i>
                 <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
             </div>
             <div class="portfolio-description overflow-auto">
               <h3 class="text-break fw-bold border-bottom pb-3">Event Organizer</h3>
-              <a href="/profile/{{$event->id}}">
+              <a href="/profile/{{$event->id_user}}">
                 <div class="d-flex p-2 mt-4">
-                  <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:30px; height:30px;">
-                  <p class="mt-1 ms-2 text-dark">{{$event->name}}</p>
+                  @if(($user->profile_photo_path) === null)
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle text-dark" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg>
+                  @else
+                  <img src="/storage/{{$user->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                  @endif
+                  <p class="mt-1 ms-2 text-dark">{{$user->name}}</p>
                 </div>
               </a>
             </div>
           </div>
-          <div class="portfolio-description overflow-auto">
+          <div class="portfolio-description">
             <h2 class="text-break">{{$event->title}}</h2>
-            <p>
+            <pre class="text-break">
               {{$event->description}}
-            </p>
+            </pre>
           </div>
         </div>
       </div>

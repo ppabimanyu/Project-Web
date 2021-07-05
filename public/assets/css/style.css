@@ -840,7 +840,7 @@ section {
   padding: 30px;
   margin-top: 20px;
   box-shadow: 0px 0 30px rgba(122, 105, 96, 0.08);
-  height: 225px;
+  height: max-content;
 }
 
 .portfolio-details .portfolio-description h2 {

@@ -75,8 +75,15 @@
     <section id="viewProfile" class="bg-white">
     <div class="container">
       <div class="d-flex p-2 border-bottom mb-4 pb-4">
-        <img src="{{$event->foto}}" class="rounded-circle" alt="" style="width:100px; height:100px; object-fit: cover">
-        <h1 class="mt-4 ms-4 fw-bold">{{$event->name}}<br>
+        @if(($user->profile_photo_path) === null)
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle text-dark" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+        @else
+        <img src="/storage/{{$user->profile_photo_path}}" class="rounded-circle" alt="" style="width:100px; height:100px; object-fit: cover">
+        @endif
+        <h1 class="mt-4 ms-4 fw-bold">{{$user->name}}<br>
           <div class="d-flex">
             <h1 class="me-2 mt-2 fs-2">Event ({{$count}})</h1>
           </div>
@@ -87,7 +94,7 @@
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
         <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
-          @foreach($daf as $event)
+          @foreach($events as $event)
             <div class="col-6 col-sm-6 col-md-4 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
               <a href="/details/{{$event->id}}" class="link-detail">
                 <div class="icon-box">
@@ -99,8 +106,8 @@
                   <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
                   <p class="description">
                     <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
-                    <i class="bi bi-stopwatch"> {{$event->time}}</i><br>
-                    <i class="bi bi-calendar-event"> {{$event->date}}</i><br>
+                    <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i><br>
+                    <i class="bi bi-calendar-event"> {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i><br>
                     <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
                   </p>
                   <hr class="mb-2">

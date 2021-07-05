@@ -6,6 +6,7 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -17,7 +18,7 @@ class EventController extends Controller
     public function index()
     {
         return view('dashboard', [
-            'events' => Event::where('email', Auth::user()->email)->get()
+            'events' => Event::where('id_user', Auth::user()->id)->get()
         ]);
     }
 
@@ -41,7 +42,8 @@ class EventController extends Controller
      */
     public function displayShow(Event $event)
     {
-        return view('index-details', compact('event'));
+        $user = DB::table('users')->where('id', $event->id_user)->first();
+        return view('index-details', compact('event', 'user'));
     }
 
     /**
@@ -50,11 +52,13 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function viewProfile(Event $event)
+    public function viewProfile($event)
     {
-        $daf = Event::where('email',$event->email)->get();
-        $count = Event::where('email',$event->email)->count();
-        return view('view_profile', compact('event', 'daf', 'count'));
+        $user = DB::table('users')->where('id', $event)->first();
+        $events = Event::where('id_user',$event)->get();
+        $count = Event::where('id_user',$event)->count();
+
+        return view('view_profile', compact('user', 'events', 'count'));
     }
 
     /**
@@ -90,9 +94,7 @@ class EventController extends Controller
         $request->img->move(public_path('/storage/images'), $imageName);
 
         Event::create([
-            'foto' => Auth::user()->profile_photo_url,
-            'name' => Auth::user()->name,
-            'email' => Auth::user()->email,
+            'id_user' => Auth::user()->id,
             'title' => $request->title,
             'category' => $request->category,
             'time' => $request->time,

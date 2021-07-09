@@ -35,7 +35,7 @@ h2 {
   .content .contents .form-group, .content .bg .form-group {
     overflow: hidden;
     margin-bottom: 0;
-    padding: 15px 15px;
+    padding: 8px 15px;
     border-bottom: none;
     position: relative;
     background: #edf2f5;
@@ -43,14 +43,15 @@ h2 {
     .content .contents .form-group label, .content .bg .form-group label {
       position: absolute;
       top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+      -webkit-transform: translateY(-40%);
+      -ms-transform: translateY(-40%);
+      transform: translateY(-40%);
       -webkit-transition: .3s all ease;
       -o-transition: .3s all ease;
       transition: .3s all ease; }
     .content .contents .form-group input, .content .bg .form-group input {
-      background: transparent; }
+      background: transparent;
+      font-size: 18px; }
     .content .contents .form-group.first, .content .bg .form-group.first {
       border-top-left-radius: 7px;
       border-top-right-radius: 7px; }
@@ -85,7 +86,7 @@ h2 {
   text-decoration: underline; }
 
 .content .btn {
-  height: 54px;
+  height: 46px;
   padding-left: 30px;
   padding-right: 30px;
   background-color: #eb5d1e;
@@ -94,7 +95,7 @@ h2 {
   border-radius: 30px;}
 
   .content .btn:hover {
-    height: 54px;
+    height: 46px;
     padding-left: 30px;
     padding-right: 30px;
     background-color: #b84f22;

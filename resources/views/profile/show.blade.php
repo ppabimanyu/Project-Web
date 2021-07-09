@@ -1,16 +1,32 @@
+<!-- Styles Tailwind -->
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+@livewireStyles
+
+<!-- Scripts -->
+<script src="{{ mix('js/app.js') }}" defer></script>
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex">
-            <a href="{{ route('dashboard') }}" class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Dashboard') }}
-            </a>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight mx-1">
-                {{ __('/') }}
-            </h2>
-            <a href="" class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Profile') }}
-            </a>
-        </div>
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex align-items-center fs-4">
+                @if(auth()->user()->role === 'admin')
+                    <a href="{{ route('admin') }}">
+                        {{ __('Dashboard') }}
+                    </a>
+                @else
+                    <a href="{{ route('dashboard') }}">
+                        {{ __('Dashboard') }}
+                    </a>
+                @endif
+                    <a href="">
+                        {{ __('/') }}
+                    </a>
+                    <a href="">
+                        {{ __('Profile') }}
+                    </a>
+                </div>
+            </div>
+        </section>
     </x-slot>
 
     <div>
@@ -51,3 +67,4 @@
         </div>
     </div>
 </x-app-layout>
+@livewireScripts

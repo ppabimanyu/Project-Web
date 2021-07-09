@@ -1,19 +1,74 @@
 <x-app-layout>
-<x-slot name="header">
-        <div class="flex">
-            <a href="{{ route('dashboard') }}" class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Dashboard') }}
-            </a>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight mx-1">
-                {{ __('/') }}
-            </h2>
-            <a href="" class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Detail') }}
-            </a>
-        </div>
+    <x-slot name="header">  
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex align-items-center fs-4">
+                    <a href="{{ route('dashboard') }}">
+                        {{ __('Dashboard') }}
+                    </a>
+                    <a href="">
+                        {{ __('/') }}
+                    </a>
+                    <a href="">
+                        {{ __('Detail') }}
+                    </a>
+                </div>
+            </div>
+        </section>
     </x-slot>
 
-    <div class="container mx-auto">
+
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <a href="/profile/{{$event->id_user}}">
+              <div class="d-flex p-3 m-2 rounded-pill position-absolute text-white countdown" data-count="{{$event->date}}" style="background-color:rgba(37, 37, 37, 0.219);">
+                <h4>%d : %h : %m : %s</h4>
+              </div>
+            </a>
+            @if(($event->img)===null)
+            <img src="/assets/img/about-img.svg" alt="">
+            @else
+            <img src="/storage/images/{{$event->img}}" alt="">
+            @endif
+          </div>
+          <div class="col-lg-4">
+            <div class="portfolio-action overflow-auto mb-4">
+                <h3 class="text-break fw-bold border-bottom pb-3">Action</h3>
+                <div class="d-flex">
+                    <a href="/dashboard/detail/{{$event->id}}/edit" class="btn btn-primary">
+                        Edit
+                    </a>
+                    <form action="/destroy/{{$event->id}}" method="post">
+                    @method('delete')
+                    @csrf
+                        <button type="submit" class="btn btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="portfolio-info">
+              <h3>Event information</h3>
+                <i class="bi bi-bookmark-fill">  {{$event->category}}</i>
+                <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i>
+                <i class="bi bi-calendar-event">  {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i>
+                <i class="bi bi-geo-alt-fill">  {{$event->platform}}</i>
+                <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
+            </div>
+          </div>
+          <div class="portfolio-description">
+            <h2 class="text-break">{{$event->title}}</h2>
+            <pre class="text-break">
+              {{$event->description}}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <div class="container mx-auto">
         <div class="md:grid md:grid-rows-4 md:grid-cols-3 gap-4 md:py-0">
             <div class="w-full block h-full p-5 bg-white col-span-2 row-span-3 shadow-lg hover:shadow-xl rounded-2xl mb-2 md:mb-0">
                 @if(($event->img)===null)
@@ -83,5 +138,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </x-app-layout>

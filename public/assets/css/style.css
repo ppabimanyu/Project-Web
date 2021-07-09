@@ -871,6 +871,11 @@ section {
     height:300px;
   }
 }
+.portfolio-details .portfolio-action{
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(122, 105, 96, 0.08);
+  height:fit-content;
+}
 
 /*--------------------------------------------------------------
 # F.A.Q

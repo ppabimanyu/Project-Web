@@ -50,8 +50,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           @auth
+          <li><a class="nav-link scrollto " href="#carouselExampleControls">Home</a></li>
           @else
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           @endauth
           <li><a class="nav-link scrollto" href="#services">Event</a></li>
@@ -61,12 +62,16 @@
           @endauth
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           @if (Route::has('login'))
-                    @auth
-                    <li><a class="getstarted scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
-                    @else
-                    <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
-                    @endauth
-            @endif
+            @auth
+              @if(auth()->user()->role === 'admin')
+                <li><a class="getstarted scrollto" href="{{ url('/admin') }}">Dashboard</a></li>
+              @else
+                <li><a class="getstarted scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
+              @endif
+            @else
+            <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
+            @endauth
+          @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -74,10 +79,35 @@
     </div>
   </header><!-- End Header -->
 
-<!-- ======= Hero Section ======= -->
-@auth
-<div class="py-5"></div>
-@else
+  <!-- ======= Hero Section ======= -->
+  @auth
+  <div class="py-5"></div>
+  <div id="carouselExampleControls" class="carousel slide mt-2 d-none d-md-block d-lg-block" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="#services">
+          <img src="/assets/img/about-img.svg" height="600px" class="d-block w-100" alt="...">
+        </a>
+      </div>
+      @foreach($events as $event)
+      <div class="carousel-item">
+        <a href="/details/{{$event->id}}">
+          <img src="/storage/images/{{$event->img}}" height="600px" class="d-block w-55 mx-auto" style="object-fit:cover" alt="...">
+        </a>
+      </div>
+      @endforeach
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  @else
+
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
       <div class="row gy-4">
@@ -308,7 +338,7 @@
 
         <div class="row">
 
-          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col" data-aos="zoom-in" data-aos-delay="100">
             <div class="member">
               <img src="/assets/img/team/mita.jpeg" class="img-fluid" alt="">
               <div class="member-info">
@@ -326,7 +356,7 @@
             </div>
           </div>
 
-          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col" data-aos="zoom-in" data-aos-delay="200">
             <div class="member">
               <img src="/assets/img/team/rifky.jpeg" class="img-fluid" alt="">
               <div class="member-info">
@@ -344,7 +374,7 @@
             </div>
           </div>
 
-          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col" data-aos="zoom-in" data-aos-delay="300">
             <div class="member">
               <img src="/assets/img/team/Abim.jpg" class="img-fluid" alt="">
               <div class="member-info">
@@ -362,7 +392,7 @@
             </div>
           </div>
 
-          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="400">
+          <div class="col" data-aos="zoom-in" data-aos-delay="400">
             <div class="member">
               <img src="/assets/img/team/rian2.jpeg" class="img-fluid" alt="">
               <div class="member-info">

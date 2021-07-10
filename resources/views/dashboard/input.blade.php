@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">  
+    <x-slot name="header">
         <section class="breadcrumbs">
             <div class="container">
                 <div class="d-flex align-items-center fs-4">
@@ -25,7 +25,7 @@
                         <label for="title" class="form-label fs-5">Title</label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
                         @error('title')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-md-12">
@@ -37,28 +37,28 @@
                             <option value="Other">Other</option>
                         </select>
                         @error('category')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-4">
                         <label for="time" class="form-label fs-5">Time</label>
                         <input type="time" class="form-control @error('time') is-invalid @enderror" id="time" name="time">
                         @error('time')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-8">
                         <label for="date" class="form-label fs-5">Date</label>
                         <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date">
                         @error('date')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-6">
                         <label for="platform" class="form-label fs-5">Platform</label>
                         <input type="text" class="form-control @error('platform') is-invalid @enderror" id="platform" name="platform">
                         @error('platform')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-6">
@@ -68,18 +68,18 @@
                             <input type="text" class="form-control @error('link') is-invalid @enderror" id="link" name="link">
                         </div>
                         @error('link')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-12">
                         <label class="form-label fs-5" for="description">Description</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="6" name="description"></textarea>
+                        <textarea id="editor" class="form-control @error('description') is-invalid @enderror" id="description" rows="6" name="description"></textarea>
                         @error('description')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="input-group mb-3 text-center mx-auto">
-                    <label for="" class="form-label fs-5">Cover Photo</label>
+                        <label for="" class="form-label fs-5">Cover Photo</label>
                         <div class="col-12 mt-1 p-4 text-center text-muted" style="border: 2.5px dashed; border-radius:5px;">
                             <input type="file" class="text-center mx-auto" name="img">
                             <p class="text-muted">
@@ -87,7 +87,7 @@
                             </p>
                         </div>
                         @error('img')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-12">

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">  
+    <x-slot name="header">
         <section class="breadcrumbs">
             <div class="container">
                 <div class="d-flex align-items-center fs-4">
@@ -19,53 +19,53 @@
 
 
     <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-8">
-            <a href="/profile/{{$event->id_user}}">
-              <div class="d-flex p-3 m-2 rounded-pill position-absolute text-white countdown" data-count="{{$event->date}}" style="background-color:rgba(37, 37, 37, 0.219);">
-                <h4>%d : %h : %m : %s</h4>
-              </div>
-            </a>
-            @if(($event->img)===null)
-            <img src="/assets/img/about-img.svg" alt="">
-            @else
-            <img src="/storage/images/{{$event->img}}" alt="">
-            @endif
-          </div>
-          <div class="col-lg-4">
-            <div class="portfolio-action overflow-auto mb-4">
-                <h3 class="text-break fw-bold border-bottom pb-3">Action</h3>
-                <div class="d-flex">
-                    <a href="/dashboard/detail/{{$event->id}}/edit" class="btn btn-primary">
-                        Edit
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-8">
+                    <a href="/profile/{{$event->id_user}}">
+                        <div class="d-flex p-3 m-2 rounded-pill position-absolute text-white countdown" data-count="{{$event->date}}" style="background-color:rgba(37, 37, 37, 0.219);">
+                            <h4>%d : %h : %m : %s</h4>
+                        </div>
                     </a>
-                    <form action="/destroy/{{$event->id}}" method="post">
-                    @method('delete')
-                    @csrf
-                        <button type="submit" class="btn btn-danger">
-                            Delete
-                        </button>
-                    </form>
+                    @if(($event->img)===null)
+                    <img src="/assets/img/about-img.svg" alt="">
+                    @else
+                    <img src="/storage/images/{{$event->img}}" alt="">
+                    @endif
+                </div>
+                <div class="col-lg-4">
+                    <div class="portfolio-action overflow-auto mb-4">
+                        <h3 class="text-break fw-bold border-bottom pb-3">Action</h3>
+                        <div class="d-flex">
+                            <a href="/dashboard/detail/{{$event->id}}/edit" class="btn btn-primary">
+                                Edit
+                            </a>
+                            <form action="/destroy/{{$event->id}}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Event information</h3>
+                        <i class="bi bi-bookmark-fill"> {{$event->category}}</i>
+                        <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i>
+                        <i class="bi bi-calendar-event"> {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i>
+                        <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
+                        <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
+                    </div>
+                </div>
+                <div class="portfolio-description">
+                    <h2 class="text-break">{{$event->title}}</h2>
+                    <p>
+                        <?= htmlspecialchars_decode($event->description); ?>
+                    </p>
                 </div>
             </div>
-            <div class="portfolio-info">
-              <h3>Event information</h3>
-                <i class="bi bi-bookmark-fill">  {{$event->category}}</i>
-                <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i>
-                <i class="bi bi-calendar-event">  {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i>
-                <i class="bi bi-geo-alt-fill">  {{$event->platform}}</i>
-                <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
-            </div>
-          </div>
-          <div class="portfolio-description">
-            <h2 class="text-break">{{$event->title}}</h2>
-            <pre class="text-break">
-              {{$event->description}}
-            </pre>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- <div class="container mx-auto">

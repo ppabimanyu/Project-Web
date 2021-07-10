@@ -49,7 +49,7 @@
         <ul>
           <li><a class="nav-link scrollto " href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="/event">Event</a></li>          
+          <li><a class="nav-link scrollto" href="/event">Event</a></li>
           <li><a class="nav-link scrollto" href="/team">Team</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
@@ -89,11 +89,11 @@
           <div class="col-lg-4">
             <div class="portfolio-info">
               <h3>Event information</h3>
-                <i class="bi bi-bookmark-fill">  {{$event->category}}</i>
-                <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i>
-                <i class="bi bi-calendar-event">  {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i>
-                <i class="bi bi-geo-alt-fill">  {{$event->platform}}</i>
-                <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
+              <i class="bi bi-bookmark-fill"> {{$event->category}}</i>
+              <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i>
+              <i class="bi bi-calendar-event"> {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i>
+              <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
+              <i class="bi bi-link"> <a href="{{$event->link}}">{{$event->link}}</a></i>
             </div>
             <div class="portfolio-description overflow-auto">
               <h3 class="text-break fw-bold border-bottom pb-3">Event Organizer</h3>
@@ -101,8 +101,8 @@
                 <div class="d-flex p-2 mt-4">
                   @if(($user->profile_photo_path) === null)
                   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle text-dark" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                   </svg>
                   @else
                   <img src="/storage/{{$user->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
@@ -114,9 +114,9 @@
           </div>
           <div class="portfolio-description">
             <h2 class="text-break">{{$event->title}}</h2>
-            <pre class="text-break">
-              {{$event->description}}
-            </pre>
+            <p>
+              <?= htmlspecialchars_decode($event->description); ?>
+            </p>
           </div>
         </div>
       </div>

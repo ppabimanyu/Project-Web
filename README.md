@@ -9,8 +9,19 @@ Daftar Anggota :
 
 ##
 
+## Guide 
 
+1. "install composer"
+2. copy the file .env.example rename .env
+3. create a new database in phpmyadmin
+4. database settings in .env
+5. "php artisan key:generate"
+6. "php artisan migrate"
+7. Open the .env file, change APP_URL=http://localhost to APP_URL=//127.0.0.1:8000
+8. "php artisan storage:link"
+9. "php artisan serve"
 
+##
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 

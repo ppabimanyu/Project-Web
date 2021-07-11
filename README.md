@@ -22,8 +22,8 @@ Daftar Anggota :
 
 ## Preview
 
-<img src="https://github.com/Putra-Prassiesa-Abimanyu/Project-Web/blob/main/public/assets/img/preview/Screenshot%20(3).png" width="100%">
 <img src="https://github.com/Putra-Prassiesa-Abimanyu/Project-Web/blob/main/public/assets/img/preview/Screenshot%20(4).png" width="100%">
+<img src="https://github.com/Putra-Prassiesa-Abimanyu/Project-Web/blob/main/public/assets/img/preview/Screenshot%20(3).png" width="100%">
 
 ##
 

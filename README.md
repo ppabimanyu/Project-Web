@@ -20,6 +20,11 @@ Daftar Anggota :
 8. "php artisan storage:link"
 9. "php artisan serve"
 
+## Preview
+
+<img src="https://github.com/Putra-Prassiesa-Abimanyu/Project-Web/blob/main/public/assets/img/preview/Screenshot%20(3).png" width="100%">
+<img src="https://github.com/Putra-Prassiesa-Abimanyu/Project-Web/blob/main/public/assets/img/preview/Screenshot%20(4).png" width="100%">
+
 ##
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>

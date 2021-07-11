@@ -7,7 +7,6 @@ Daftar Anggota :
 4. (E41191929) Anton Setyo Prihartanto
 5. (E41192307) Rifky Roudana Imani Cahya
 
-##
 
 ## Guide 
 
@@ -88,4 +87,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ##
 
-<img src="https://instagram.fsub5-2.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/209704467_583925286328332_1051706706271910278_n.jpg?tp=1&_nc_ht=instagram.fsub5-2.fna.fbcdn.net&_nc_cat=1&_nc_ohc=6VLRRKj01bAAX_3q_HO&edm=ACOOH6wBAAAA&ccb=7-4&oh=47e9e64382dedc145310995a11dd69f4&oe=60E70683&_nc_sid=ec1c8f&ig_cache_key=MjYwOTA0OTE4NTU3MTU3Mjk1NA%3D%3D.2-ccb7-4" width="100%">
+<img src="https://instagram.fsub5-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/209704467_583925286328332_1051706706271910278_n.jpg?_nc_ht=instagram.fsub5-2.fna.fbcdn.net&_nc_cat=100&_nc_ohc=Zm17YsvjKxMAX9F8ipo&edm=AP_V10EBAAAA&ccb=7-4&oh=4b7787207aaa5eab0b356c2c4e99427c&oe=60F11643&_nc_sid=4f375e" width="100%">

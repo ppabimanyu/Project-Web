@@ -43,12 +43,13 @@
       <nav id="navbar" class="navbar">
         <ul>
           @auth
-          <li><a class="nav-link scrollto " href="#carouselExampleControls">Home</a></li>
+          <!-- <li><a class="nav-link scrollto " href="#carouselExampleControls">Home</a></li> -->
+          <li><a class="nav-link scrollto" href="/">Event</a></li>
           @else
           <li><a class="nav-link scrollto " href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-          @endauth
           <li><a class="nav-link scrollto" href="#services">Event</a></li>
+          @endauth
           @auth
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           @else
@@ -74,30 +75,6 @@
 
   @auth
   <div class="py-5"></div>
-  <div id="carouselExampleControls" class="carousel slide mt-2 d-none d-md-block d-lg-block" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="#services">
-          <img src="/assets/img/about-img.svg" height="600px" class="d-block w-100" alt="...">
-        </a>
-      </div>
-      @foreach($events as $event)
-      <div class="carousel-item">
-        <a href="/details/{{$event->id}}">
-          <img src="/storage/images/{{$event->img}}" height="600px" class="d-block w-55 mx-auto" style="object-fit:cover" alt="...">
-        </a>
-      </div>
-      @endforeach
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
   @else
 
   <section id="hero" class="d-flex align-items-center">
@@ -156,10 +133,11 @@
         </div>
 
         <!-- Searching -->
-        <form action="">
+        <form action="/" method="post">
+          @csrf
           <div class="mb-5 d-flex bg-white rounded-pill border">
             <button class="btn text-dark" style="border-color: transparent;"><i class="bi bi-search fs-5 fw-bold"></i></button>
-            <input type="text" class="form-control rounded-pill fs-5" id="search" placeholder="Search" style="border-color: transparent;">
+            <input type="text" name="keyword" class="form-control rounded-pill fs-5" id="search" placeholder="Search" style="border-color: transparent;">
           </div>
         </form>
         <!-- End Searching -->
@@ -409,19 +387,6 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <!-- <div class="footer-newsletter">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-6">
-              <h4>Join Our Newsletter</h4>
-              <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-              <form action="" method="post">
-                <input type="email" name="email"><input type="submit" value="Subscribe">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div> -->
     <div class="footer-top">
       <div class="container">
         <div class="row">

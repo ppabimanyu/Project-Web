@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 // Index
 Route::get('/', [EventController::class, 'index'])->name('/');
+Route::post('/', [EventController::class, 'index'])->name('/');
 Route::get('/profile/{event}', [EventController::class, 'viewProfile'])->name('/view-profile');
 Route::get('/details/{event}', [EventController::class, 'show'])->name('displayShow');
 
-Route::group(['middleware' => ['auth:sanctum', 'verified', 'accessrole' ]], function() {
+Route::group(['middleware' => ['auth:sanctum', 'verified', 'accessrole']], function () {
 
     // User Role
     Route::get('/userRole', [UserRoleController::class, 'index'])->name('userRole');

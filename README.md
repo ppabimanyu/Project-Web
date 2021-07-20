@@ -10,7 +10,7 @@ Daftar Anggota :
 
 ## Guide 
 
-1. "install composer"
+1. "composer install"
 2. copy the file .env.example rename .env
 3. create a new database in phpmyadmin
 4. database settings in .env

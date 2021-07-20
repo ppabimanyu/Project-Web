@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
@@ -12,11 +13,18 @@ class EventController extends Controller
      * Menapilkan semua data 
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('index', [
-            'events' => Event::latest()->get()
-        ]);
+        // dd($request->keyword);
+        if ($request->keyword == null) {
+            return view('index', [
+                'events' => Event::latest()->get()
+            ]);
+        } else {
+            return view('index', [
+                'events' => Event::where('title', 'like', '%' . $request->keyword . '%')->get()
+            ]);
+        }
     }
 
     /**
@@ -40,8 +48,8 @@ class EventController extends Controller
     public function viewProfile($event)
     {
         $user = DB::table('users')->where('id', $event)->first();
-        $events = Event::where('id_user',$event)->get();
-        $count = Event::where('id_user',$event)->count();
+        $events = Event::where('id_user', $event)->get();
+        $count = Event::where('id_user', $event)->count();
 
         return view('view_profile', compact('user', 'events', 'count'));
     }

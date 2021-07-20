@@ -47,14 +47,25 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="/">Home</a></li>
-          <li><a class="nav-link scrollto" href="/about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="/event">Event</a></li>
-          <li><a class="nav-link scrollto" href="/team">Team</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          <li><a class="nav-link scrollto " href="{{url('/')}}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#services">Event</a></li>
+          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          @if (Route::has('login'))
+          @auth
+          @if(auth()->user()->role === 'admin')
+          <li><a class="getstarted scrollto" href="{{ url('/admin') }}">Dashboard</a></li>
+          @else
+          <li><a class="getstarted scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
+          @endif
+          @else
+          <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
+          @endauth
+          @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
+      <!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
@@ -121,6 +132,48 @@
         </div>
       </div>
     </section><!-- End Portfolio Details Section -->
+    <section class="content-item" id="comments">
+      <div class="container">
+        <form>
+          <h3 class="mb-4">New Comment</h3>
+          <hr class="mb-4">
+          <div class="mb-4">
+            <div class="d-flex mb-4">
+              <img class="mx-4" height="120px" width="120px" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+              <textarea class="form-control" id="message" placeholder="Your message" rows="10" required=""></textarea>
+            </div>
+            <div class="d-flex justify-content-end col">
+              <button type="submit" class="btn btn-primary justify-content-end">Submit</button>
+            </div>
+          </div>
+        </form>
+
+        <h3>4 Comments</h3>
+        <hr class="mb-4">
+
+        <div class="d-flex my-5">
+          <a href="#"><img class="mx-4" height="120px" width="120px" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
+          <div class="">
+            <div class="d-flex justify-content-between">
+              <h4 class="fw-bold">John Doe</h4>
+              <p class="fw-bold fs-6"><i class="bi bi-calendar-week mx-2 fs-5"></i>27/02/2014</p>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+        <div class="d-flex my-5">
+          <a href="#"><img class="mx-4" height="120px" width="120px" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
+          <div class="">
+            <div class="d-flex justify-content-between">
+              <h4 class="fw-bold">John Doe</h4>
+              <p class="fw-bold fs-6"><i class="bi bi-calendar-week mx-2 fs-5"></i>27/02/2014</p>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+        <!-- COMMENT 1 - END -->
+      </div>
+    </section>
 
   </main><!-- End #main -->
 

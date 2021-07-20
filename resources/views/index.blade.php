@@ -301,7 +301,7 @@
 
         <div class="row">
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col" data-aos="zoom-in" data-aos-delay="100">
             <div class="member">
               <img src="/assets/img/team/mita.jpeg" class="img-fluid" alt="">
               <div class="member-info">
@@ -319,7 +319,7 @@
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col" data-aos="zoom-in" data-aos-delay="200">
             <div class="member">
               <img src="/assets/img/team/rifky.jpeg" class="img-fluid" alt="">
               <div class="member-info">
@@ -337,7 +337,7 @@
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col" data-aos="zoom-in" data-aos-delay="300">
             <div class="member">
               <img src="/assets/img/team/team-3.jpg" class="img-fluid" alt="">
               <div class="member-info">
@@ -355,7 +355,7 @@
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+          <div class="col" data-aos="zoom-in" data-aos-delay="400">
             <div class="member">
               <img src="/assets/img/team/rian2.jpeg" class="img-fluid" alt="">
               <div class="member-info">
@@ -373,7 +373,7 @@
             </div>
           </div>
 
-          <div class="col-xl-2 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col" data-aos="zoom-in" data-aos-delay="300">
             <div class="member">
               <img src="/assets/img/team/anton.jpeg" class="img-fluid" alt="">
               <div class="member-info">

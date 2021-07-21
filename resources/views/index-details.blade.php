@@ -47,17 +47,63 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="{{url('/')}}">Home</a></li>
-          <li><a class="nav-link scrollto" href="#services">Event</a></li>
-          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
           @if (Route::has('login'))
           @auth
-          @if(auth()->user()->role === 'admin')
-          <li><a class="getstarted scrollto" href="{{ url('/admin') }}">Dashboard</a></li>
-          @else
-          <li><a class="getstarted scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
-          @endif
+          <li class="dropdown">
+            <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="user-menu d-flex">
+                <div class="user-name text-end me-3 mt-4">
+                  <h6 class="mb-0 text-gray-600 fs-5">{{ Auth::user()->name }}</h6>
+                </div>
+                <div class="user-img d-flex align-items-center">
+                  <div class="avatar avatar-md">
+                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" class="rounded-circle">
+                  </div>
+                </div>
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+              <li>
+                <h6 class="dropdown-header fs-5">Hello, {{ strtok(Auth::user()->name, " ") }}!</h6>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ route('profile.show') }}">
+                  <i class="icon-mid bi bi-person me-2 fs-5"></i>
+                  My Profile
+                </a>
+              </li>
+              <li>
+                @if(auth()->user()->role === 'admin')
+                <a class="dropdown-item" href="{{ url('/admin') }}">
+                  @else
+                  <a class="dropdown-item" href="{{ route('dashboard') }}">
+                    @endif
+                    <i class="icon-mid bi bi-person me-2 fs-5"></i>
+                    Dashboard
+                  </a>
+              </li>
+              @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+              <li>
+                <a class="dropdown-item" href="#">
+                  <i class="icon-mid bi bi-gear me-2 fs-5"></i>
+                  {{ __('API Tokens') }}
+                </a>
+              </li>
+              @endif
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  <i class="icon-mid bi bi-box-arrow-left me-2"></i>
+                  {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+              </li>
+            </ul>
+          </li>
           @else
           <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
           @endauth
@@ -86,7 +132,7 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-8">
-            <a href="/profile/{{$event->id_user}}">
+            <a href="{{url('/profile/'.$event->id_user)}}">
               <div class="d-flex p-3 m-2 rounded-pill position-absolute text-white countdown" data-count="{{$event->date}}" style="background-color:rgba(37, 37, 37, 0.219);">
                 <h4>%d : %h : %m : %s</h4>
               </div>

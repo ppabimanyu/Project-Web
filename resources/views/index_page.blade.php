@@ -27,23 +27,21 @@
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Ninestars - v4.3.0
-  * Template URL: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body>
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
+      <!-- Logo -->
       <div class="logo">
         <h1 class="text-light"><a href="/"><span>LiveIn</span></a></h1>
-
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
+      <!-- End Logo -->
+      <!-- Navbar -->
       <nav id="navbar" class="navbar">
         <ul>
           @if (Route::has('login'))
@@ -109,84 +107,94 @@
           @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
+      <!-- End Navbar -->
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Services Section ======= -->
-  <div class="py-5"></div>
-  <section id="viewProfile" class="bg-white">
-    <div class="container">
-      <div class="d-flex p-2 border-bottom mb-4 pb-4">
-        @if(($user->profile_photo_path) === null)
-        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle text-dark" viewBox="0 0 16 16">
-          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-        </svg>
-        @else
-        <img src="/storage/{{$user->profile_photo_path}}" class="rounded-circle" alt="" style="width:100px; height:100px; object-fit: cover">
-        @endif
-        <h1 class="mt-4 ms-4 fw-bold">{{$user->name}}<br>
-          <div class="d-flex">
-            <h1 class="me-2 mt-2 fs-2">Event ({{$count}})</h1>
-          </div>
-        </h1>
-      </div>
-    </div>
-  </section>
+  <main>
+    <div class="py-5"></div>
+    <section id="services" class="services bg-white">
+      <div class="container" data-aos="fade-up">
 
-  <section id="services" class="services bg-white">
-    <div class="container" data-aos="fade-up">
-      <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
-        @foreach($events as $event)
-        <div class="col-6 col-sm-6 col-md-4 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
-          <a href="{{url('/details/'.$event->id)}}" class="link-detail">
-            <div class="icon-box">
-              @if(($event->img)===null)
-              <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
-              @else
-              <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg">
-              @endif
-              <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
-              <p class="description">
-                <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
-                <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i><br>
-                <i class="bi bi-calendar-event"> {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i><br>
-                <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
-              </p>
-              <hr class="mb-2">
-              <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
-            </div>
-          </a>
+        <div class="section-title">
+          @if($event == 'all')
+          <h2>All Live Event</h2>
+          @else
+          <h2>{{$event}}</h2>
+          @endif
+          <p>Check out the great {{$event}}s event you can find</p>
+          <!-- <p>Check out the great live broadcasts you can find</p> -->
         </div>
-        @endforeach
-      </div>
-    </div>
-  </section>
 
-  <!-- End Services Section -->
+        @if(!$events->isEmpty())
+        <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
+          @foreach($events as $event)
+          <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-15 align-items-stretch portfolio-item {{$event->category}}">
+            <a href="{{url('/details/'.$event->id)}}" class="link-detail">
+              <div class="icon-box">
+                <div class="d-flex p-2">
+                  @if(((DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path) === null)
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                  </svg>
+                  @else
+                  <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                  @endif
+                  <p class="mt-1 ms-2">{{(DB::table('users')->where('id', $event->id_user)->first())->name}}</p>
+                </div>
+                @if(($event->img)===null)
+                <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
+                @else
+                <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg">
+                @endif
+                <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
+                <p class="description">
+                  <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
+                  <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i><br>
+                  <i class="bi bi-calendar-event"> {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i><br>
+                  <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
+                </p>
+                <hr class="mb-2">
+                <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
+              </div>
+            </a>
+          </div>
+          @endforeach
+        </div>
+        @else
+        <div class="d-flex justify-content-center"><img src="/assets/img/not_found.svg" width="500" alt=""></div>
+        <div class="d-flex justify-content-center">
+          <h1 class="fs-1 fw-bold">Not Found</h1>
+        </div>
+        <div class="d-flex justify-content-center my-5 py-5">
+          <a href="{{ route('create') }}" class="btn btn-primary p-3" style="background-color:orange; border-color:orange">create your own event</a>
+        </div>
+        @endif
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-
     <!-- <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <h4>Join Our Newsletter</h4>
+              <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+              <form action="" method="post">
+                <input type="email" name="email"><input type="submit" value="Subscribe">
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </div> -->
-
+      </div> -->
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
           <div class="col-lg-4 col-md-6 footer-contact">
             <h3>Ninestars</h3>
             <p>
@@ -197,7 +205,6 @@
               <strong>Email:</strong> LiveInStream@gmail.com<br>
             </p>
           </div>
-
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
@@ -208,7 +215,6 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
-
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
             <p>Agar kalian tidak ketinggalan berita, follow social network kita untuk informasi terbaru</p>
@@ -220,24 +226,19 @@
               <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
     <div class="container py-4">
       <div class="copyright">
         &copy; Copyright <strong><span>Ninestars</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/ -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
+  <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -251,7 +252,6 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-
 </body>
 
 </html>

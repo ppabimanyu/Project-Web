@@ -37,10 +37,10 @@
                     <div class="portfolio-action overflow-auto mb-4">
                         <h3 class="text-break fw-bold border-bottom pb-3">Action</h3>
                         <div class="d-flex">
-                            <a href="/dashboard/detail/{{$event->id}}/edit" class="btn btn-primary">
+                            <a href="{{url('/dashboard/detail/'.$event->id.'/edit')}}" class="btn btn-primary">
                                 Edit
                             </a>
-                            <form action="/destroy/{{$event->id}}" method="post">
+                            <form action="{{url('/destroy/'.$event->id)}}" method="post">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger">

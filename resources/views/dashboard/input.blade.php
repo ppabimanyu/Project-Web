@@ -32,8 +32,9 @@
                         <label for="inputState" class="form-label fs-5">Category</label>
                         <select id="inputState" class="form-select @error('category') is-invalid @enderror" name="category">
                             <option value="Seminar" selected>Seminar</option>
-                            <option value="Kesehatan">Kesehatan</option>
-                            <option value="Gaming">Gaming</option>
+                            <option value="Health">Kesehatan</option>
+                            <option value="Game">Gaming</option>
+                            <option value="Education">Education</option>
                             <option value="Other">Other</option>
                         </select>
                         @error('category')

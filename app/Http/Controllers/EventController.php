@@ -13,18 +13,41 @@ class EventController extends Controller
      * Menapilkan semua data 
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // dd($request->keyword);
-        if ($request->keyword == null) {
-            return view('index', [
-                'events' => Event::latest()->get()
-            ]);
+        $seminars = Event::where('category', 'Seminar')->latest()->get();
+        $healths = Event::where('category', 'Health')->latest()->get();
+        $games = Event::where('category', 'Game')->latest()->get();
+        $academics = Event::where('category', 'Education')->latest()->get();
+        $others = Event::where('category', 'Other')->latest()->get();
+
+        return view('index', compact('seminars', 'healths', 'games', 'academics', 'others'));
+    }
+    /**
+     * Display a listing of the resource.
+     * Menapilkan semua data 
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $events = Event::where('title', 'like', '%' . $request->keyword . '%')->get();
+
+        return view('index_page', compact('events'));
+    }
+    /**
+     * Display a listing of the resource.
+     * Menapilkan semua data 
+     * @return \Illuminate\Http\Response
+     */
+    public function eventPage($event)
+    {
+        if ($event == "all") {
+            $events = Event::latest()->get();
         } else {
-            return view('index', [
-                'events' => Event::where('title', 'like', '%' . $request->keyword . '%')->get()
-            ]);
+            $events = Event::where('category', $event)->latest()->get();
         }
+
+        return view('index_page', compact('events', 'event'));
     }
 
     /**

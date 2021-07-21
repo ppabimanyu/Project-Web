@@ -10,7 +10,7 @@
                         {{ __('/') }}
                     </a>
                     <a href="">
-                        {{ __('Create') }}
+                        {{ __('Edit') }}
                     </a>
                 </div>
             </div>
@@ -19,7 +19,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <form action="/update/{{$event->id}}" method="post" class="row g-3" enctype="multipart/form-data">
+                <form action="{{url('/update/'.$event->id)}}" method="post" class="row g-3" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
                         <label for="title" class="form-label fs-5">Title</label>

@@ -18,6 +18,35 @@ a {
     text-decoration: none;
 }
 
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+    .col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1400px) {
+    .col-xl-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
 a:hover {
     color: #ef7f4d;
     text-decoration: none;
@@ -341,6 +370,94 @@ h6,
 }
 
 /*--------------------------------------------------------------
+# Category
+--------------------------------------------------------------*/
+#category .card {
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+    border: 1px solid #fff;
+    width: 75px;
+    height: 75px;
+}
+
+#category #all {
+    background-color: #ffc8afa4;
+    color: #ec6426;
+}
+#category #all:hover {
+    transform: translateY(-10px);
+    border-color: #ec6426;
+}
+#category #seminar {
+    background-color: #afd8ffa4;
+    color: #267cec;
+}
+#category #seminar:hover {
+    transform: translateY(-10px);
+    border-color: #267cec;
+}
+#category #healthy {
+    background-color: #afffb6a4;
+    color: #26ec30;
+}
+#category #healthy:hover {
+    transform: translateY(-10px);
+    border-color: #26ec30;
+}
+#category #game {
+    background-color: #faffafa4;
+    color: #c5c80a;
+}
+#category #game:hover {
+    transform: translateY(-10px);
+    border-color: #c5c80a;
+}
+#category #academic {
+    background-color: #f8afffa4;
+    color: #db26ec;
+}
+#category #academic:hover {
+    transform: translateY(-10px);
+    border-color: #db26ec;
+}
+#category #other {
+    background-color: #aff8ffa4;
+    color: #13c0cf;
+}
+#category #other:hover {
+    transform: translateY(-10px);
+    border-color: #13c0cf;
+}
+
+/*--------------------------------------------------------------
+# List Category
+--------------------------------------------------------------*/
+.list-category #seminar h2,
+.list-category #seminar h4 {
+    /* color: #267cec; */
+    color: #111;
+}
+.list-category #healthy h2,
+.list-category #healthy h4 {
+    /* color: #26ec30; */
+    color: #111;
+}
+.list-category #game h2,
+.list-category #game h4 {
+    /* color: #c5c80a; */
+    color: #111;
+}
+.list-category #academic h2,
+.list-category #academic h4 {
+    /* color: #db26ec; */
+    color: #111;
+}
+.list-category #other h2,
+.list-category #other h4 {
+    /* color: #13c0cf; */
+    color: #111;
+}
+/*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
@@ -593,6 +710,7 @@ section {
     text-align: left;
     border-bottom: 3px solid #fff;
     height: max-content;
+    width: 250px;
 }
 
 .services .icon-box:hover {
@@ -651,7 +769,7 @@ section {
 }
 @media (min-width: 992px) {
     .services .icon-box img {
-        height: 200px;
+        height: 150px;
     }
 }
 @media (max-width: 991px) {
@@ -666,7 +784,7 @@ section {
 }
 @media (max-width: 575px) {
     .services .icon-box img {
-        height: 100px;
+        height: 120px;
     }
 }
 /*--------------------------------------------------------------
@@ -696,8 +814,8 @@ section {
     transition: all 0.3s ease-in-out;
 }
 
-.portfolio #portfolio-flters li:hover,
-.portfolio #portfolio-flters li.filter-active {
+#portfolio-flters li:hover,
+#portfolio-flters li.filter-active {
     color: #eb5d1e;
 }
 

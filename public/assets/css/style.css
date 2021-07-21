@@ -50,6 +50,9 @@ a {
 .object-fit-cover {
     object-fit: cover;
 }
+.bg-orange {
+    background-color: #fef8f5;
+}
 
 a:hover {
     color: #ef7f4d;
@@ -436,28 +439,28 @@ h6,
 /*--------------------------------------------------------------
 # List Category
 --------------------------------------------------------------*/
-.list-category #seminar h2,
-.list-category #seminar h4 {
+.list-category #seminar h2
+/* .list-category #seminar h4  */ {
     /* color: #267cec; */
     color: #111;
 }
-.list-category #healthy h2,
-.list-category #healthy h4 {
+.list-category #healthy h2
+/* .list-category #healthy h4  */ {
     /* color: #26ec30; */
     color: #111;
 }
-.list-category #game h2,
-.list-category #game h4 {
+.list-category #game h2
+/* .list-category #game h4  */ {
     /* color: #c5c80a; */
     color: #111;
 }
-.list-category #academic h2,
-.list-category #academic h4 {
+.list-category #academic h2
+/* .list-category #academic h4  */ {
     /* color: #db26ec; */
     color: #111;
 }
-.list-category #other h2,
-.list-category #other h4 {
+.list-category #other h2
+/* .list-category #other h4  */ {
     /* color: #13c0cf; */
     color: #111;
 }

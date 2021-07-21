@@ -54,7 +54,7 @@
                 </div>
                 <div class="user-img d-flex align-items-center">
                   <div class="avatar avatar-md">
-                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" class="rounded-circle">
+                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" height="50px" class="rounded-circle object-fit-cover">
                   </div>
                 </div>
               </div>
@@ -62,12 +62,6 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
               <li>
                 <h6 class="dropdown-header fs-5">Hello, {{ strtok(Auth::user()->name, " ") }}!</h6>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{ route('profile.show') }}">
-                  <i class="icon-mid bi bi-person me-2 fs-5"></i>
-                  My Profile
-                </a>
               </li>
               <li>
                 @if(auth()->user()->role === 'admin')
@@ -78,6 +72,12 @@
                     <i class="icon-mid bi bi-person me-2 fs-5"></i>
                     Dashboard
                   </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ route('profile.show') }}">
+                  <i class="icon-mid bi bi-person me-2 fs-5"></i>
+                  My Profile
+                </a>
               </li>
               @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
               <li>
@@ -117,13 +117,17 @@
     <section id="services" class="services bg-white">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title mt-5">
           @if($event == 'all')
-          <h2>All Live Event</h2>
+          <h2>All Live Events</h2>
+          <p>Check out all the great event you can find</p>
+          @elseif($event == 'search')
+          <p>Check out the great event you can find</p><br>
+          <h2>search result "{{$result}}"</h2>
           @else
           <h2>{{$event}}</h2>
-          @endif
           <p>Check out the great {{$event}}s event you can find</p>
+          @endif
           <!-- <p>Check out the great live broadcasts you can find</p> -->
         </div>
 
@@ -140,7 +144,7 @@
                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                   </svg>
                   @else
-                  <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                  <img src="/storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
                   @endif
                   <p class="mt-1 ms-2">{{(DB::table('users')->where('id', $event->id_user)->first())->name}}</p>
                 </div>

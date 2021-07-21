@@ -55,7 +55,7 @@
             </div>
             <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
                 @foreach($events as $event)
-                <div class="col-6 col-sm-6 col-md-4 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-15 align-items-stretch portfolio-item {{$event->category}}">
                     <form action="{{url('/dashboard/detail/'.$event->id)}}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-link text-decoration-none text-dark">

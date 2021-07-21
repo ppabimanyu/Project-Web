@@ -56,7 +56,7 @@
                 </div>
                 <div class="user-img d-flex align-items-center">
                   <div class="avatar avatar-md">
-                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" class="rounded-circle">
+                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" height="50px" class="rounded-circle object-fit-cover">
                   </div>
                 </div>
               </div>
@@ -64,12 +64,6 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
               <li>
                 <h6 class="dropdown-header fs-5">Hello, {{ strtok(Auth::user()->name, " ") }}!</h6>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{ route('profile.show') }}">
-                  <i class="icon-mid bi bi-person me-2 fs-5"></i>
-                  My Profile
-                </a>
               </li>
               <li>
                 @if(auth()->user()->role === 'admin')
@@ -80,6 +74,12 @@
                     <i class="icon-mid bi bi-person me-2 fs-5"></i>
                     Dashboard
                   </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ route('profile.show') }}">
+                  <i class="icon-mid bi bi-person me-2 fs-5"></i>
+                  My Profile
+                </a>
               </li>
               @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
               <li>
@@ -124,7 +124,7 @@
           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
         </svg>
         @else
-        <img src="/storage/{{$user->profile_photo_path}}" class="rounded-circle" alt="" style="width:100px; height:100px; object-fit: cover">
+        <img src="/storage/{{$user->profile_photo_path}}" class="rounded-circle object-fit-cover" alt="" width="100px" height="100px">
         @endif
         <h1 class="mt-4 ms-4 fw-bold">{{$user->name}}<br>
           <div class="d-flex">
@@ -139,7 +139,7 @@
     <div class="container" data-aos="fade-up">
       <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
         @foreach($events as $event)
-        <div class="col-6 col-sm-6 col-md-4 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-15 align-items-stretch portfolio-item {{$event->category}}">
           <a href="{{url('/details/'.$event->id)}}" class="link-detail">
             <div class="icon-box">
               @if(($event->img)===null)

@@ -44,7 +44,7 @@
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-md">
-                                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" class="rounded-circle">
+                                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" height="50px" alt="" class="rounded-circle object-fit-cover h-16 w-16">
                                 </div>
                             </div>
                         </div>

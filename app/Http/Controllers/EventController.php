@@ -31,8 +31,10 @@ class EventController extends Controller
     public function search(Request $request)
     {
         $events = Event::where('title', 'like', '%' . $request->keyword . '%')->get();
+        $event = "search";
+        $result = $request->keyword;
 
-        return view('index_page', compact('events'));
+        return view('index_page', compact('events', 'event', 'result'));
     }
     /**
      * Display a listing of the resource.

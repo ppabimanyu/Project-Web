@@ -47,6 +47,10 @@ a {
     }
 }
 
+.object-fit-cover {
+    object-fit: cover;
+}
+
 a:hover {
     color: #ef7f4d;
     text-decoration: none;
@@ -568,7 +572,7 @@ h6,
 # Sections General
 --------------------------------------------------------------*/
 section {
-    padding: 60px 0;
+    padding: 20px 0;
     overflow: hidden;
 }
 
@@ -699,14 +703,14 @@ section {
 # Services
 --------------------------------------------------------------*/
 .services .icon-box {
-    padding: 15px;
+    padding: 10px;
     position: relative;
     overflow: hidden;
     margin: 0 0 40px 0;
     background: #fff;
     box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
     transition: all 0.3s ease-in-out;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: left;
     border-bottom: 3px solid #fff;
     height: max-content;

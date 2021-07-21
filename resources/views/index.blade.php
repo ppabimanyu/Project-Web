@@ -54,7 +54,7 @@
                 </div>
                 <div class="user-img d-flex align-items-center">
                   <div class="avatar avatar-md">
-                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" class="rounded-circle">
+                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" height="50px" class="rounded-circle object-fit-cover">
                   </div>
                 </div>
               </div>
@@ -134,7 +134,7 @@
   </section>
 
   <main id="main">
-    <section id="about" class="about">
+    <section id="about" class="about mt-5 pt-5">
       <div class="container">
         <div class="row justify-content-between">
           <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
@@ -163,7 +163,7 @@
     </section>
     @endauth
 
-    <section id="services" class="services bg-white">
+    <section id="services" class="services bg-white mt-5 pt-5">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -277,7 +277,7 @@
         <div class="list-category">
           @if(!$seminars->isEmpty())
           <div data-aos="slide-left">
-            <div id="seminar" class="d-flex justify-content-between mt-5">
+            <div id="seminar" class="d-flex justify-content-between mt-3">
               <a href="{{ url('/events/Seminar') }}">
                 <h2 class="fw-bold">Seminar</h2>
               </a>
@@ -301,7 +301,7 @@
                           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                         </svg>
                         @else
-                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle object-fit-cover" alt="" style="width:30px; height:30px">
                         @endif
                         <p class="mt-1 ms-2">{{(DB::table('users')->where('id', $event->id_user)->first())->name}}</p>
                       </div>
@@ -330,7 +330,7 @@
 
           @if(!$healths->isEmpty())
           <div data-aos="slide-left">
-            <div id="healthy" class="d-flex justify-content-between mt-5">
+            <div id="healthy" class="d-flex justify-content-between mt-3">
               <a href="{{ url('/events/Healthy') }}">
                 <h2 class="fw-bold">Healthy</h2>
               </a>
@@ -354,7 +354,7 @@
                           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                         </svg>
                         @else
-                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle object-fit-cover" alt="" style="width:30px; height:30px">
                         @endif
                         <p class="mt-1 ms-2">{{(DB::table('users')->where('id', $event->id_user)->first())->name}}</p>
                       </div>
@@ -383,7 +383,7 @@
 
           @if(!$games->isEmpty())
           <div data-aos="slide-left">
-            <div id="game" class="d-flex justify-content-between mt-5">
+            <div id="game" class="d-flex justify-content-between mt-3">
               <a href="{{ url('/events/Game') }}">
                 <h2 class="fw-bold">Game</h2>
               </a>
@@ -407,7 +407,7 @@
                           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                         </svg>
                         @else
-                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle object-fit-cover" alt="" style="width:30px; height:30px">
                         @endif
                         <p class="mt-1 ms-2">{{(DB::table('users')->where('id', $event->id_user)->first())->name}}</p>
                       </div>
@@ -436,7 +436,7 @@
 
           @if(!$academics->isEmpty())
           <div data-aos="slide-left">
-            <div id="academic" class="d-flex justify-content-between mt-5">
+            <div id="academic" class="d-flex justify-content-between mt-3">
               <a href="{{ url('/events/Education') }}">
                 <h2 class="fw-bold">Academic</h2>
               </a>
@@ -460,7 +460,7 @@
                           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                         </svg>
                         @else
-                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle object-fit-cover" alt="" style="width:30px; height:30px">
                         @endif
                         <p class="mt-1 ms-2">{{(DB::table('users')->where('id', $event->id_user)->first())->name}}</p>
                       </div>
@@ -489,7 +489,7 @@
 
           @if(!$others->isEmpty())
           <div data-aos="slide-left">
-            <div id="other" class="d-flex justify-content-between mt-5">
+            <div id="other" class="d-flex justify-content-between mt-3">
               <a href="{{ url('/events/Other') }}">
                 <h2 class="fw-bold">Other</h2>
               </a>
@@ -513,7 +513,7 @@
                           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                         </svg>
                         @else
-                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle" alt="" style="width:30px; height:30px">
+                        <img src="storage/{{(DB::table('users')->where('id', $event->id_user)->first())->profile_photo_path}}" class="rounded-circle object-fit-cover" alt="" style="width:30px; height:30px">
                         @endif
                         <p class="mt-1 ms-2">{{(DB::table('users')->where('id', $event->id_user)->first())->name}}</p>
                       </div>

@@ -6,7 +6,7 @@ use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class EventController extends Controller
+class EventApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $seminars = Event::where('category', 'Seminar')->latest()->get();
-        $healths = Event::where('category', 'Health')->latest()->get();
-        $games = Event::where('category', 'Game')->latest()->get();
-        $educations = Event::where('category', 'Education')->latest()->get();
-        $others = Event::where('category', 'Other')->latest()->get();
-
-        return view('index', compact('seminars', 'healths', 'games', 'educations', 'others'));
+        $events = Event::latest()->get();
+        return response()->json(['message' => 'Success', 'data' => $events]);
     }
     /**
      * Display a listing of the resource.
@@ -31,10 +26,9 @@ class EventController extends Controller
     public function search(Request $request)
     {
         $events = Event::where('title', 'like', '%' . $request->keyword . '%')->get();
-        $event = "search";
         $result = $request->keyword;
 
-        return view('index_page', compact('events', 'event', 'result'));
+        return response()->json(['message' => 'Success', 'result' => $result, 'data' => $events]);
     }
     /**
      * Display a listing of the resource.
@@ -49,7 +43,7 @@ class EventController extends Controller
             $events = Event::where('category', $event)->latest()->get();
         }
 
-        return view('index_page', compact('events', 'event'));
+        return response()->json(['message' => 'Success', 'category' => $event, 'data' => $events]);
     }
 
     /**
@@ -61,7 +55,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $user = DB::table('users')->where('id', $event->id_user)->first();
-        return view('index-details', compact('event', 'user'));
+        return response()->json(['message' => 'Success', 'data' => $event, 'user' => $user]);
     }
 
     /**
@@ -76,6 +70,6 @@ class EventController extends Controller
         $events = Event::where('id_user', $event)->get();
         $count = Event::where('id_user', $event)->count();
 
-        return view('view_profile', compact('user', 'events', 'count'));
+        return response()->json(['message' => 'Success', 'user' => $user, 'count' => $count, 'data' => $events]);
     }
 }

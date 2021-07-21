@@ -338,7 +338,7 @@
           <div data-aos="slide-left">
             <div id="healthy" class="d-flex justify-content-between mt-3">
               <a href="{{ url('/events/Healthy') }}">
-                <h2 class="fw-bold">Healthy</h2>
+                <h2 class="fw-bold">Health</h2>
               </a>
               <a href="{{ url('/events/Healthy') }}">
                 <h4 class="text-decoration-underline">more >></h4>
@@ -440,11 +440,11 @@
           </div>
           @endif
 
-          @if(!$academics->isEmpty())
+          @if(!$educations->isEmpty())
           <div data-aos="slide-left">
             <div id="academic" class="d-flex justify-content-between mt-3">
               <a href="{{ url('/events/Education') }}">
-                <h2 class="fw-bold">Academic</h2>
+                <h2 class="fw-bold">Education</h2>
               </a>
               <a href="{{ url('/events/Education') }}">
                 <h4 class="text-decoration-underline">more >></h4>
@@ -454,7 +454,7 @@
           </div>
           <div class="swipper-slider">
             <div class="swiper-wrapper">
-              @foreach($academics as $event)
+              @foreach($educations as $event)
               <div class="swiper-slide" data-aos="slide-right">
                 <div class="portfolio-item" style="width: 300px;">
                   <a href="{{url('/details/'.$event->id)}}" class="link-detail">
@@ -821,8 +821,8 @@
       strings: ["Create your own event", "Make your live broadcast reach many people", "Find great live broadcasts for you"],
       typeSpeed: 30,
       smartBackspace: true,
-      backDelay: 1200,
-      backSpeed: 30,
+      backDelay: 1400,
+      backSpeed: 10,
       loop: true,
     });
   </script>

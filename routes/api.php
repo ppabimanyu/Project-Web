@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+// Index
+Route::get('/', [EventApiController::class, 'index']);
+Route::get('/profile/{event}', [EventApiController::class, 'viewProfile']);
+Route::get('/details/{event}', [EventApiController::class, 'show']);
+Route::post('/search', [EventApiController::class, 'search']);
+Route::get('/events/{category}', [EventApiController::class, 'eventPage']);
+
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

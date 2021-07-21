@@ -3,6 +3,12 @@
         <section class="breadcrumbs">
             <div class="container">
                 <div class="d-flex align-items-center fs-4">
+                    <a href="{{ route('/') }}" class="fs-4 me-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                        </svg>
+                    </a>
                     <a href="{{ route('dashboard') }}">
                         {{ __('Dashboard') }}
                     </a>
@@ -37,14 +43,14 @@
                     <div class="portfolio-action overflow-auto mb-4">
                         <h3 class="text-break fw-bold border-bottom pb-3">Action</h3>
                         <div class="d-flex">
-                            <a href="{{url('/dashboard/detail/'.$event->id.'/edit')}}" class="btn btn-primary">
-                                Edit
+                            <a href="{{url('/dashboard/detail/'.$event->id.'/edit')}}" class="btn btn-primary me-2 p-3 rounded-3">
+                                <i class="bi bi-pencil"></i> Edit
                             </a>
                             <form action="{{url('/destroy/'.$event->id)}}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">
-                                    Delete
+                                <button type="submit" class="btn btn-danger p-3 rounded-3">
+                                    <i class="bi bi-trash"></i> Delete
                                 </button>
                             </form>
                         </div>

@@ -760,7 +760,7 @@
     <div class="footer-top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-6 footer-contact">
+          <div class="col-lg-6 col-md-6 footer-contact">
             <h3>Ninestars</h3>
             <p>
               Jl. Mastrip No.164 <br>
@@ -770,17 +770,7 @@
               <strong>Email:</strong> LiveInStream@gmail.com<br>
             </p>
           </div>
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-4 col-md-6 footer-links">
+          <div class="col-lg-6 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
             <p>Agar kalian tidak ketinggalan berita, follow social network kita untuk informasi terbaru</p>
             <div class="social-links mt-3">

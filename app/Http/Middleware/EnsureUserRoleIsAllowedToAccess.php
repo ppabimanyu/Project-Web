@@ -49,7 +49,8 @@ class EnsureUserRoleIsAllowedToAccess
                 'destroy',
                 'edit',
                 'update',
-                'userRole'
+                'userRole',
+                'comment'
             ],
             'admin' => [
                 'admin',

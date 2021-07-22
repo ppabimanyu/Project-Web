@@ -10,7 +10,7 @@
                         <div class="col-md-8">
                             <div class="mb-4">
                                 <h3>Sign Up</h3>
-                                <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                                <p class="mb-4">Complete your details information</p>
                             </div>
                             <x-jet-validation-errors class="mb-4 fs-6 text-muted" />
                             <form action="{{ route('register') }}" method="POST">

@@ -180,13 +180,15 @@
     </section><!-- End Portfolio Details Section -->
     <section class="content-item" id="comments">
       <div class="container">
-        <form>
+        <form method="post" action="{{url('comment')}}">
+          @csrf
           <h3 class="mb-4">New Comment</h3>
           <hr class="mb-4">
           <div class="mb-4">
             <div class="d-flex mb-4">
-              <img class="mx-4" height="120px" width="120px" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-              <textarea class="form-control" id="message" placeholder="Your message" rows="10" required=""></textarea>
+              <img class="mx-4 rounded-circle object-fit-cover" height="100px" width="100px" src="{{ Auth::user()->profile_photo_url }}" alt="Profile">
+              <textarea class="form-control" id="message" name="comment" placeholder="Your message" rows="10" required=""></textarea>
+              <input type="hidden" id="id_event" name="id_event" value="{{$event->id}}">
             </div>
             <div class="d-flex justify-content-end col">
               <button type="submit" class="btn btn-primary justify-content-end">Submit</button>
@@ -194,29 +196,27 @@
           </div>
         </form>
 
-        <h3>4 Comments</h3>
+        <h3>{{$comments->count()}} Comments</h3>
         <hr class="mb-4">
-
+        @foreach($comments as $comment)
         <div class="d-flex my-5">
-          <a href="#"><img class="mx-4" height="120px" width="120px" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
+          @if(((DB::table('users')->where('id', $comment->id_user)->first())->profile_photo_path) === null)
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-circle mx-4" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>
+          @else
+          <a href="#"><img class="mx-4 rounded-circle object-fit-cover" height="60px" width="60px" src="/storage/{{(DB::table('users')->where('id', $comment->id_user)->first())->profile_photo_path}}" alt=""></a>
+          @endif
           <div class="">
             <div class="d-flex justify-content-between">
-              <h4 class="fw-bold">John Doe</h4>
-              <p class="fw-bold fs-6"><i class="bi bi-calendar-week mx-2 fs-5"></i>27/02/2014</p>
+              <h4 class="fw-bold">{{(DB::table('users')->where('id', $comment->id_user)->first())->name}}</h4>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="fs-5">{{$comment->comment}}</p>
+            <p class="text-muted"><i class="bi bi-calendar-week mx-2 mt-4"></i>{{$comment->created_at->diffForHumans()}}</p>
           </div>
         </div>
-        <div class="d-flex my-5">
-          <a href="#"><img class="mx-4" height="120px" width="120px" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
-          <div class="">
-            <div class="d-flex justify-content-between">
-              <h4 class="fw-bold">John Doe</h4>
-              <p class="fw-bold fs-6"><i class="bi bi-calendar-week mx-2 fs-5"></i>27/02/2014</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
+        @endforeach
         <!-- COMMENT 1 - END -->
       </div>
     </section>

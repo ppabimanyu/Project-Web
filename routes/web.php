@@ -41,4 +41,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'accessrole']], funct
 
     // Admin
     Route::get('/admin', [AdminEventController::class, 'index'])->name('admin');
+
+    // Commment
+    Route::post('comment', [EventController::class, 'comment'])->name('comment');
 });

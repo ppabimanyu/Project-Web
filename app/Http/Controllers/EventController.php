@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -61,7 +63,8 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $user = DB::table('users')->where('id', $event->id_user)->first();
-        return view('index-details', compact('event', 'user'));
+        $comments = Comment::latest()->where('id_event', $event->id)->get();
+        return view('index-details', compact('event', 'user', 'comments'));
     }
 
     /**
@@ -77,5 +80,30 @@ class EventController extends Controller
         $count = Event::where('id_user', $event)->count();
 
         return view('view_profile', compact('user', 'events', 'count'));
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     * Input data ke database
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function comment(Request $request)
+    {
+
+        $request->validate([
+            'comment' => 'required',
+            'id_event' => 'required',
+        ]);
+
+        Comment::create([
+            'id_user' => Auth::user()->id,
+            'id_event' => $request->id_event,
+            'comment' => $request->comment,
+        ]);
+        // Event::create($request->all());
+
+        return redirect('/details' . '/' . $request->id_event);
     }
 }

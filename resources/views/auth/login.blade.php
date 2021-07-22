@@ -9,8 +9,8 @@
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="mb-4">
-                                <h3>Sign Up</h3>
-                                <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                                <h3>Sign In</h3>
+                                <p class="mb-4">Sign In with your email and password</p>
                             </div>
                             @if (session('status'))
                             <div class="mb-4 font-medium text-sm text-green-600">
@@ -38,7 +38,7 @@
                                         <div class="control__indicator"></div>
                                     </label>
                                 </div>
-                                <button class="btn btn-block  mt-5">Log In</button>
+                                <button class="btn btn-block  mt-5">Sign In</button>
                             </form>
                             <div class="text-center mt-5 text-lg fs-4">
                                 @if (Route::has('register'))

@@ -196,9 +196,9 @@
   /**
    * Clients Slider
    */
-  new Swiper('.clients-slider', {
+  new Swiper('.swipper-slider', {
     speed: 400,
-    loop: true,
+    loop: false,
     autoplay: {
       delay: 5000,
       disableOnInteraction: false
@@ -211,20 +211,28 @@
     },
     breakpoints: {
       320: {
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+      480: {
         slidesPerView: 2,
         spaceBetween: 40
       },
-      480: {
-        slidesPerView: 3,
-        spaceBetween: 60
-      },
       640: {
-        slidesPerView: 4,
-        spaceBetween: 80
+        slidesPerView: 3,
+        spaceBetween: 10
       },
       992: {
-        slidesPerView: 6,
-        spaceBetween: 120
+        slidesPerView: 3,
+        spaceBetween: 10
+      },
+      1020: {
+        slidesPerView: 4,
+        spaceBetween: 10
+      },
+      1440: {
+        slidesPerView: 5,
+        spaceBetween: 10
       }
     }
   });

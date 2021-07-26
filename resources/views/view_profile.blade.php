@@ -46,23 +46,66 @@
       </div>
       <nav id="navbar" class="navbar">
         <ul>
-          @auth
-          @else
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-          @endauth
-          <li><a class="nav-link scrollto" href="/">Event</a></li>
-          @auth
-          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-          @else
-          @endauth
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
           @if (Route::has('login'))
-            @auth
-              <li><a class="getstarted scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
-            @else
-              <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
-            @endauth
+          @auth
+          <li class="dropdown">
+            <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="user-menu d-flex">
+                <div class="user-name text-end me-3 mt-4">
+                  <h6 class="mb-0 text-gray-600 fs-5">{{ Auth::user()->name }}</h6>
+                </div>
+                <div class="user-img d-flex align-items-center">
+                  <div class="avatar avatar-md">
+                    <img src="{{ Auth::user()->profile_photo_url }}" width="50px" height="50px" class="rounded-circle object-fit-cover">
+                  </div>
+                </div>
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+              <li>
+                <h6 class="dropdown-header fs-5">Hello, {{ strtok(Auth::user()->name, " ") }}!</h6>
+              </li>
+              <li>
+                @if(auth()->user()->role === 'admin')
+                <a class="dropdown-item" href="{{ url('/admin') }}">
+                  @else
+                  <a class="dropdown-item" href="{{ route('dashboard') }}">
+                    @endif
+                    <i class="icon-mid bi bi-person me-2 fs-5"></i>
+                    Dashboard
+                  </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ route('profile.show') }}">
+                  <i class="icon-mid bi bi-person me-2 fs-5"></i>
+                  My Profile
+                </a>
+              </li>
+              @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+              <li>
+                <a class="dropdown-item" href="#">
+                  <i class="icon-mid bi bi-gear me-2 fs-5"></i>
+                  {{ __('API Tokens') }}
+                </a>
+              </li>
+              @endif
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  <i class="icon-mid bi bi-box-arrow-left me-2"></i>
+                  {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+              </li>
+            </ul>
+          </li>
+          @else
+          <li><a class="getstarted scrollto" href="{{ route('register') }}">Get Started</a></li>
+          @endauth
           @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -70,18 +113,18 @@
     </div>
   </header><!-- End Header -->
 
-    <!-- ======= Services Section ======= -->
-    <div class="py-5"></div>
-    <section id="viewProfile" class="bg-white">
+  <!-- ======= Services Section ======= -->
+  <div class="py-5"></div>
+  <section id="viewProfile" class="bg-white">
     <div class="container">
       <div class="d-flex p-2 border-bottom mb-4 pb-4">
         @if(($user->profile_photo_path) === null)
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle text-dark" viewBox="0 0 16 16">
-          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
         </svg>
         @else
-        <img src="/storage/{{$user->profile_photo_path}}" class="rounded-circle" alt="" style="width:100px; height:100px; object-fit: cover">
+        <img src="/storage/{{$user->profile_photo_path}}" class="rounded-circle object-fit-cover" alt="" width="100px" height="100px">
         @endif
         <h1 class="mt-4 ms-4 fw-bold">{{$user->name}}<br>
           <div class="d-flex">
@@ -90,242 +133,38 @@
         </h1>
       </div>
     </div>
+  </section>
 
-    <section id="services" class="services section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
-          @foreach($events as $event)
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3 align-items-stretch portfolio-item {{$event->category}}">
-              <a href="/details/{{$event->id}}" class="link-detail">
-                <div class="icon-box">
-                  @if(($event->img)===null)
-                  <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
-                  @else
-                  <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg">
-                  @endif
-                  <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
-                  <p class="description">
-                    <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
-                    <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i><br>
-                    <i class="bi bi-calendar-event"> {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i><br>
-                    <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
-                  </p>
-                  <hr class="mb-2">
-                  <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
-                </div>
-              </a>
+  <section id="services" class="services bg-white">
+    <div class="container" data-aos="fade-up">
+      <div class="row portfolio-container" data-aos="zoom-in" data-aos-delay="200">
+        @foreach($events as $event)
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-15 align-items-stretch portfolio-item {{$event->category}}">
+          <a href="{{url('/details/'.$event->id)}}" class="link-detail">
+            <div class="icon-box">
+              @if(($event->img)===null)
+              <img src="/assets/img/about-img.svg" class="rounded-3" alt="">
+              @else
+              <img src="/storage/images/{{$event->img}}" class="rounded-3" alt="/assets/img/about-img.svg">
+              @endif
+              <h4 class="title mt-2 text-break" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$event->title}}">{{$event->title}}</h4>
+              <p class="description">
+                <i class="bi bi-bookmark-fill"> {{$event->category}}</i><br>
+                <i class="bi bi-stopwatch"> {{\Carbon\Carbon::parse($event->time)->format('h:i A')}}</i><br>
+                <i class="bi bi-calendar-event"> {{\Carbon\Carbon::parse($event->date)->format('l, j F Y')}}</i><br>
+                <i class="bi bi-geo-alt-fill"> {{$event->platform}}</i>
+              </p>
+              <hr class="mb-2">
+              <p class="text-gray-600 text-end">{{$event->created_at->diffForHumans()}}</p>
             </div>
-          @endforeach
+          </a>
         </div>
+        @endforeach
       </div>
-    </section>
+    </div>
+  </section>
 
-    </section><!-- End Services Section -->
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="row justify-content-between">
-          <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
-            <img src="/assets/img/about-img.svg" class="img-fluid" alt="" data-aos="zoom-in">
-          </div>
-          <div class="col-lg-6 pt-5 pt-lg-0">
-            <h3 data-aos="fade-up">Apa itu LiveIn?</h3>
-            <p data-aos="fade-up" data-aos-delay="100">
-            LiveIn adalah sebuah website informasi yang memiliki tujuan untuk menyebarkan informasi jadwal livestreaming, seminar, workshop, training, dan lain lain. Dengan adanya LiveIn pengunjung bisa mendapatkan informasi tentang jadwal-jadwal dengan terperinci
-            </p>
-            <div class="row">
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <i class="bx bx-receipt"></i>
-                <h4>Corporis voluptates sit</h4>
-                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-              </div>
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <i class="bx bx-cube-alt"></i>
-                <h4>Ullamco laboris nisi</h4>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======= F.A.Q Section ======= -->
-    <section id="faq" class="faq section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>F.A.Q</h2>
-          <p>Frequently Asked Questions</p>
-        </div>
-
-        <ul class="faq-list" data-aos="fade-up" data-aos-delay="100">
-
-          <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Bagaimana cara mendaftar di LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-              <p>
-              Untuk mendaftar akun dapat dengan cara tekan tombol pada pojok kanan atas "Get Started" kemudian isi data yang ada, apabila telah memiliki akun dapat menekan tombol "Already registered?".
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Apakah kita memasang event di LiveIn diharuskan membayar? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-              <p>
-              Memasang event pada Livein tidak diharuskan membayar, kami menyediakannya 100% gratis tanpa biaya apapun.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Bagaimana jika ingin menghapus event yang sudah kita posting di LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-              <p>
-              Pada menu "Your Event" terdapat tampilan jadwal event yang telah dibuat, untuk menghapus event dapat dengan cara tekan event yang ingin dihapus kemudian terdapat pilihan "Edit" untuk mengedit event dan "Deleted" untuk menghapus event.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Apakah kita bisa memasang lebih dari satu jadwal event di LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-              <p>
-              Pada Livein anda bisa memasang lebih dari satu jadwal event sesuai dengan yang dibutuhkan.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Bagaimana cara kerja LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq5" class="collapse" data-bs-parent=".faq-list">
-              <p>
-              Pertama membuat akun Livein terlebih dahulu. Setelah itu membuat event dengan mengisi data event kemudian tunggu hingga event dimulai
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Bagaimana cara mengatasi error pada saat mendaftar di LiveIn? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq6" class="collapse" data-bs-parent=".faq-list">
-              <p>
-              Apabila terjadi error saat mendaftar akun, Anda dapat menghubungi customer service melalui email yang telah disediakan.
-              </p>
-            </div>
-          </li>
-
-        </ul>
-
-      </div>
-    </section><!-- End F.A.Q Section -->
-
-       <!-- ======= Team Section ======= -->
-       <section id="team" class="team">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Team</h2>
-          <p>Our team is always here to help</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="member">
-              <img src="/assets/img/team/mita.jpeg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Mita Unziya</h4>
-                  <span>Chief Executive Officer</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="member">
-              <img src="/assets/img/team/rifky.jpeg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Rifky Roudana Imani Cahya</h4>
-                  <span>Product Manager</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="member">
-              <img src="/assets/img/team/Abim.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Putra Prasessia Abimanyu</h4>
-                  <span>CTO</span>
-                </div>
-                <div class="social">
-                  <a href="https://twitter.com/PpAbimanyu" target="blank"><i class="bi bi-twitter"></i></a>
-                  <a href="https://web.facebook.com/abimanyu.ppa/" target="blank"><i class="bi bi-facebook"></i></a>
-                  <a href="https://www.instagram.com/abimanyu_ppa/" target="blank"><i class="bi bi-instagram"></i></a>
-                  <a href="https://www.linkedin.com/in/putra-prassiesa-abimanyu-140336213/" target="blank"><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col col-md col-sm-4" data-aos="zoom-in" data-aos-delay="400">
-            <div class="member">
-              <img src="/assets/img/team/rian2.jpeg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Muhammad Rian </h4>
-                  <span>Accountant</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col" data-aos="zoom-in" data-aos-delay="300">
-            <div class="member">
-              <img src="/assets/img/team/anton.jpeg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Anton Setyo</h4>
-                  <span>CTO</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- End Team Section -->
-  </main><!-- End #main -->
+  <!-- End Services Section -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -348,16 +187,16 @@
       <div class="container">
         <div class="row">
 
-        <div class="col-lg-4 col-md-6 footer-contact">
-          <h3>Ninestars</h3>
-          <p>
-            Jl. Mastrip No.164 <br>
-            Kabupaten Jember<br>
-            Provinsi Jawa Timur<br><br>
-            <strong>Phone:</strong> +6282335772936<br>
-            <strong>Email:</strong> LiveInStream@gmail.com<br>
-          </p>
-        </div>
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h3>Ninestars</h3>
+            <p>
+              Jl. Mastrip No.164 <br>
+              Kabupaten Jember<br>
+              Provinsi Jawa Timur<br><br>
+              <strong>Phone:</strong> +6282335772936<br>
+              <strong>Email:</strong> LiveInStream@gmail.com<br>
+            </p>
+          </div>
 
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Useful Links</h4>
@@ -390,13 +229,13 @@
       <div class="copyright">
         &copy; Copyright <strong><span>Ninestars</span></strong>. All Rights Reserved
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      <!-- <div class="credits"> -->
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/ -->
+      <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div> -->
     </div>
   </footer><!-- End Footer -->
 
